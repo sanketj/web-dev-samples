@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            html {
+                /* touch-action: auto; */
+                touch-action: none;
+                /* pointer-events: none; */
+            }
+        </style>
+    </head>
+    <body>
+        <div>abc</div>
+        <script>
+            let div = document.querySelector('div');
+            div.addEventListener('pointerdown', () => {
+                console.log('down');
+            });
+            div.addEventListener('pointerup', () => {
+                console.log('up');
+            });
+            div.addEventListener('pointercancel', () => {
+                console.log('cancel');
+            });
+        </script>
+    </body>
+</html>
