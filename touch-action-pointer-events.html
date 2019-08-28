@@ -2,11 +2,16 @@
 <html>
     <head>
         <style>
-            html {
-                /* touch-action: auto; */
+            /* html {
                 touch-action: auto;
-                /* pointer-events: none; */
+                pointer-events: none;
+            } */
+            #p1 {
+                touch-action: none;
             }
+            /* #p2 {
+                touch-action: none;
+            } */
         </style>
     </head>
     <body>
@@ -33,7 +38,7 @@
             for (const p of pAll) {
                 p.addEventListener('pointerdown', (event) => {
                     console.log(event.target.getAttribute('id') + ' pointerdown');
-                    event.target.setPointerCapture(event.pointerId);
+                    //event.target.setPointerCapture(event.pointerId);
                     //event.preventDefault();
                 });
                 p.addEventListener('pointermove', (event) => {
