@@ -1,0 +1,19 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+        </style>
+    </head>
+    <body>
+        <input type='text' value='abc' />
+        <script>
+            let input = document.querySelector('input');
+            let observer = new MutationObserver(() => {
+                alert('hello');
+            });
+            observer.observe(input, { attributes: true });
+            input.setAttribute('value', 'def');
+            //input.value = 'def';
+        </script>
+    </body>
+</html>
