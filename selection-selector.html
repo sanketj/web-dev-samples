@@ -2,20 +2,29 @@
 <html>
     <head>
         <style>
-            :root::selection {
+            /* :root::selection {
                 background-color: red;
                 color: blue;
-            }
+            } */
             /* body {
                 background-color: green;
-            }
-            p ::selection {
-                background-color: blue;
+            } */
+            p::selection {
                 color: yellow;
+                /* background: green; */
+            }
+            /* p > em::selection {
+                color: orange;
+            } */
+            p {
+                color:red;
+            }
+            /* em::selection {
+                color: blue;
             } */
         </style>
     </head>
     <body>
-        <div>abc</div><p>def</p>
+        <p>Highlight this <em>and this</em>.</p>
     </body>
 </html>
