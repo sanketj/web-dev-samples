@@ -1,0 +1,18 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <style></style>
+    </head>
+    <body>
+        <div contenteditable='true'>hello</div>
+        <input type='button' value='click' />
+        <script>
+            let input = document.querySelector('input');
+            input.addEventListener('click', () => alert(document.range.toString()));
+            let div = document.querySelector('div');
+            document.range = new Range();
+            document.range.setStart(div.firstChild, 1);
+            document.range.setEnd(div.firstChild, 4);
+        </script>
+    </body>
+</html>
