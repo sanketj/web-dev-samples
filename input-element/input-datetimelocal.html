@@ -1,0 +1,24 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+        </style>
+    </head>
+    <body>
+        <input type='datetime-local'>
+        <script>
+            var datetimeLocalControl = document.querySelector('input');
+
+            function handleInput(event) {
+                alert('reached #1');
+                this.removeAttribute('type');
+                setTimeout(function() {
+                    alert('reached #2');
+                }, 0);
+            }
+            datetimeLocalControl.addEventListener('input', handleInput, false);
+
+            datetimeLocalControl.value = '2013-01-21T17:49';
+        </script>
+    </body>
+</html>
