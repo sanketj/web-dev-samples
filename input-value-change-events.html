@@ -6,14 +6,17 @@
     </head>
     <body>
         <input type='text' value='abc' />
+        <input type='color' value='#FF0000' />
         <script>
-            let input = document.querySelector('input');
-            let observer = new MutationObserver(() => {
-                alert('hello');
-            });
-            observer.observe(input, { attributes: true });
-            input.setAttribute('value', 'def');
-            //input.value = 'def';
+            let text = document.querySelector('input');
+            let color = document.querySelectorAll('input')[1];
+            // let observer = new MutationObserver(() => {
+            //     alert('mutation observer hello');
+            // });
+            // observer.observe(text, { attributes: true });
+            //text.setAttribute('value', 'def');
+            //text.value = 'def';
+            color.addEventListener('change', () => alert('change event hello'));
         </script>
     </body>
 </html>
