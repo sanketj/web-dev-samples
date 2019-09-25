@@ -1,0 +1,7 @@
+﻿<input type='text' value='abc' />
+<script>
+  var text = document.querySelector('input');
+  text.addEventListener('keydown', () => console.log('key down'));
+  text.addEventListener('keypress', () => console.log('key press'));
+  text.addEventListener('keyup', () => console.log('key up'));
+</script>
