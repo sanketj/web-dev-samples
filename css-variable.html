@@ -1,0 +1,15 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            body {
+                --foo: 4px;
+            }
+        </style>
+    </head>
+    <body>
+        <script>
+            alert(Number(window.getComputedStyle(document.body).getPropertyValue('--foo').slice(0, -2)));
+        </script>
+    </body>
+</html>
