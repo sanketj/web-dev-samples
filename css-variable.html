@@ -3,13 +3,13 @@
     <head>
         <style>
             body {
-                --foo: 4px;
+                --foo: 0;
             }
         </style>
     </head>
     <body>
         <script>
-            alert(Number(window.getComputedStyle(document.body).getPropertyValue('--foo').slice(0, -2)));
+            alert(window.getComputedStyle(document.body).getPropertyValue('--foo').trim() === '0');
         </script>
     </body>
 </html>
