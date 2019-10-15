@@ -1,0 +1,24 @@
+<head>
+    <style>
+        div {
+            background-color: cyan;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <div id='div1' style='width: 401px'>abc</div>
+    <div id='div2' style='width: 400.6px'>abc</div>
+    <div id='div3' style='width: 400.4px'>abc</div>
+    <div id='div4' style='width: 400px'>abc</div>
+    <script>
+        let div1 = document.getElementById('div1');
+        let div2 = document.getElementById('div2');
+        let div3 = document.getElementById('div3');
+        let div4 = document.getElementById('div4');
+        alert(div1.offsetWidth);
+        alert(div2.offsetWidth);
+        alert(div3.offsetWidth);
+        alert(div4.offsetWidth);
+    </script>
+</body>
