@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+    input[type="color" i] {
+      border: 0;
+      box-sizing: border-box;
+      height: 27px;
+      padding: 0;
+      position: absolute;
+      width: 50px;
+    }
+
+    input[type="color" i]::-webkit-color-swatch-wrapper {
+      left: 0;
+      top: 0;
+    }
+
+    input[type="color" i]::-webkit-color-swatch {
+      border: 0;
+      border-radius: 2px;
+      height: 100%;
+      width: 100%;
+    }
+
+    input[type="color" i][list] {
+      background-color: #FFFFFF;
+      border: 1px solid #8D8D8D;
+      box-sizing: border-box;
+      height: 27px;
+      width: 75px;
+    }
+
+    input[type="color" i][list]::-webkit-color-swatch-wrapper {
+      height: 21px;
+      left: 0;
+      position: absolute;
+      top: 0;
+      width: 47px;
+    }
+
+    input[type="color" i][list]::-webkit-color-swatch {
+      border: 0;
+      border-radius: 2px;
+    }
+    </style>
+  </head>
+  <body>
+    <input type="color" value="#123456" />
+    <br />
+    <br />
+    <br />
+    <br />
+    <input type="color" value="#abcdef" list/>
+  </body>
+</html>
