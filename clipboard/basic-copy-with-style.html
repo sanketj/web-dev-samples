@@ -2,10 +2,16 @@
 <html>
     <head>
         <style>
+            #span1,
+            #span3 {
+                border: 1px solid blue;
+            }
         </style>
     </head>
     <body>
-        <div id='div1' style='border: 1px solid blue'>abc</div>
-        <div id='div2'>def</div>
+        <span id='span1'>abc</span><span style='color: lightgray;'> <= span with border</span><br/>
+        <span id='span2'>def</span><span style='color: lightgray;'>&nbsp; <= span</span><br/>
+        <span id='span3'><span>ab</span>c</span><span style='color: lightgray;'> <= span with border and span child</span><br/>
+        <span id='span4'><span>de</span>f</span><span style='color: lightgray;'>&nbsp; <= span with span child</span><br/>
     </body>
 </html>
