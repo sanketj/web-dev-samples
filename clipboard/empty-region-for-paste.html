@@ -2,10 +2,28 @@
 <html>
     <head>
         <style>
-            body {
-                border: 1px dashed black;
+            div {
+                border-color: black;
+                border-width: 1px;
+            }
+            #pasteContainer {
+                border-style: solid;
+            }
+            #serializationResultContainer {
+                border-style: dashed;
             }
         </style>
     </head>
-    <body contenteditable="true"></body>
+    <body>
+        Paste below:
+        <div id='pasteContainer' contenteditable='true'></div>
+        <br />
+        <div id='serializationResultContainer' contenteditable='true'></div>
+        <script>
+            document.body.addEventListener('paste', (event) => {
+                const serializationResultContainer = document.getElementById('serializationResultContainer');
+                serializationResultContainer.append(event.clipboardData.getData('text/html'));
+            });
+        </script>
+    </body>
 </html>
