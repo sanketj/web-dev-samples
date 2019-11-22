@@ -1,0 +1,19 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+        </style>
+    </head>
+    <body>
+        a<span style="float: right">b</span>c
+        <br />
+        <script>
+            document.documentElement.addEventListener('mousedown', (event) => {
+                document.body.append('(' + event.clientX + ', ' + event.clientY + ')', document.createElement('br'));
+            });
+            document.documentElement.addEventListener('mouseup', (event) => {
+                document.body.append('(' + event.clientX + ', ' + event.clientY + ')', document.createElement('br'));
+            });
+        </script>
+    </body>
+</html>
