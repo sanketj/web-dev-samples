@@ -1,0 +1,15 @@
+﻿<!DOCTYPE html>
+<html>
+    <body>
+        <div><span>a</span>b</div>
+        <br />
+        <script>
+            document.documentElement.addEventListener('mousedown', (event) => {
+                document.body.append('(' + event.clientX + ', ' + event.clientY + ')', document.createElement('br'));
+            });
+            document.documentElement.addEventListener('mouseup', (event) => {
+                document.body.append('(' + event.clientX + ', ' + event.clientY + ')', document.createElement('br'));
+            });
+        </script>
+    </body>
+</html>
