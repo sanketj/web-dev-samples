@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+        </style>
+    </head>
+    <body>
+        <table>
+            <tbody>
+                <tr>
+                    <th>Company</th>
+                    <th>Browser</th>
+                </tr>
+                <tr>
+                    <td rowspan='2'>Microsoft</td>
+                    <td>Edge</td>
+                </tr>
+                <tr>
+                    <td>Internet Explorer</td>
+                </tr>
+            </tbody>
+        </table>
+        <script>
+            document.documentElement.addEventListener('mousedown', (event) => {
+                document.body.append('(' + event.clientX + ', ' + event.clientY + ')', document.createElement('br'));
+            });
+            document.documentElement.addEventListener('mouseup', (event) => {
+                document.body.append('(' + event.clientX + ', ' + event.clientY + ')', document.createElement('br'));
+            });
+        </script>
+    </body>
+</html>
