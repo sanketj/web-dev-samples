@@ -1,0 +1,34 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+        </style>
+    </head>
+    <body>
+        <table>
+            <tbody>
+                <caption>Browser and Company</caption>
+                <tr>
+                    <th>Browser</th>
+                    <th>Company</th>
+                </tr>
+                <tr>
+                    <td>Edge</td>
+                    <td>Microsoft</td>
+                </tr>
+                <tr>
+                    <td>Chrome</td>
+                    <td>Google</td>
+                </tr>
+            </tbody>
+        </table>
+        <script>
+            document.documentElement.addEventListener('mousedown', (event) => {
+                document.body.append('(' + event.clientX + ', ' + event.clientY + ')', document.createElement('br'));
+            });
+            document.documentElement.addEventListener('mouseup', (event) => {
+                document.body.append('(' + event.clientX + ', ' + event.clientY + ')', document.createElement('br'));
+            });
+        </script>
+    </body>
+</html>
