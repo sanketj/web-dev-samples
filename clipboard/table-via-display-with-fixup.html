@@ -1,0 +1,25 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+        </style>
+    </head>
+    <body>
+        <span style="display: table">
+            <span style="display: table-row">
+                <span style="display: table-cell">Browser</span>
+                <span style="display: table-cell">Company</span>
+            </span>
+            <span style="display: table-cell">Edge</span>
+            <span style="display: table-cell">Microsoft</span>
+        </span>
+        <script>
+            document.documentElement.addEventListener('mousedown', (event) => {
+                document.body.append('(' + event.clientX + ', ' + event.clientY + ')', document.createElement('br'));
+            });
+            document.documentElement.addEventListener('mouseup', (event) => {
+                document.body.append('(' + event.clientX + ', ' + event.clientY + ')', document.createElement('br'));
+            });
+        </script>
+    </body>
+</html>
