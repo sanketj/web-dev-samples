@@ -1,0 +1,19 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <style></style>
+    </head>
+    <body>
+        <div contenteditable="true">abc</div>
+        <div contenteditable="true"></div>
+        <input type="button" value="click" />
+        <script>
+            const input = document.querySelector('input');
+            input.addEventListener('click', () => {
+                const secondDiv = document.querySelectorAll('div')[1];
+                secondDiv.focus();
+                document.execCommand('insertText', false, 'def');
+            });
+        </script>
+    </body>
+</html>
