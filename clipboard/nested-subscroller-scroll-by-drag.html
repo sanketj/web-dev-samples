@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            #outerDiv {
+                position: fixed;
+                overflow: scroll;
+                width: 400px;
+                height: 200px;
+            }
+
+            #innerDiv {
+                overflow: auto;
+                width: 200px;
+                height: 200px;
+                margin-left: 50px;
+            }
+
+            #absoluteDiv {
+                position: absolute;
+                background-color: green;
+                top: 50px;
+                width: 300px;
+                height: 50px;
+            }
+
+            #regularDiv {
+                background-color: yellow;
+                width: 300px;
+                height: 50px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="outerDiv">
+            <div id="innerDiv">
+                <div id="regularDiv"></div>
+                <div id="regularDiv"></div>
+                <div id="regularDiv"></div>
+                <div id="absoluteDiv"></div>
+                <div id="regularDiv"></div>
+                <div id="regularDiv"></div>
+            </div>
+        </div>
+        <script>
+            document.getElementById("outerDiv").addEventListener("scroll", () => {
+                 document.getElementById("outerDiv").scrollTop = "0";
+                 document.getElementById("outerDiv").scrollLeft = "0";
+            });
+        </script>
+    </body>
+</html>
