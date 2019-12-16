@@ -1,0 +1,26 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            body {
+                background-color: lightyellow;
+            }
+            #span1,
+            #span3 {
+                border: 1px solid blue;
+            }
+        </style>
+    </head>
+    <body>
+        <span id='span1'></span><span style='color: lightgray;'> <= span with border</span><br/>
+        <span id='span2'>def</span><span style='color: lightgray;'>&nbsp; <= span</span><br/>
+        <script>
+            let span1 = document.getElementById('span1');
+            span1.append('a', 'b', 'c');
+            document.body.addEventListener('copy', (event) => {
+                alert('copy fired');
+                event.preventDefault();
+            });
+        </script>
+    </body>
+</html>
