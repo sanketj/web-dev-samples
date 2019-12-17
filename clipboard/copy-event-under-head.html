@@ -1,0 +1,19 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            head {
+                display: block;
+            }
+        </style>
+    </head>
+    <body>
+        <script>
+            document.head.append('abc');
+            document.body.remove();
+            document.head.addEventListener('copy', () => alert('copy on head fired'));
+            document.documentElement.addEventListener('copy', () => alert('copy on documentElement fired'));
+            document.addEventListener('copy', () => alert('copy on document fired'));
+        </script>
+    </body>
+</html>

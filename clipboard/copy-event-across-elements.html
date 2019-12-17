@@ -1,0 +1,17 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+        </style>
+    </head>
+    <body>
+        <div>abc</div><span>def</span>
+        <script>
+            const div = document.querySelector('div');
+            const span = document.querySelector('span');
+            document.body.addEventListener('copy', () => alert('copy on body fired'));
+            div.addEventListener('copy', () => alert('copy on div fired'));
+            span.addEventListener('copy', () => alert('copy on span fired'));
+        </script>
+    </body>
+</html>
