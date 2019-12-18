@@ -1,0 +1,19 @@
+<head>
+    <style>
+        div::first-letter {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    123<div>abc</div>456
+    <script>
+        let div = document.querySelector('div');
+        document.body.offsetHeight;
+        //let textNode = div.firstChild;
+        //textNode.replaceData(0, 1, 'x');
+        //div.innerText = 'xbc';
+        document.body.appendChild(div);
+        document.body.offsetHeight;
+    </script>
+</body>

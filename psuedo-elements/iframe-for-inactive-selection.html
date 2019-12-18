@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            p::inactive-selection {
+                background-color: red;
+                color: blue;
+            }
+            p::selection {
+                color: yellow;
+                background: green;
+            }
+        </style>
+    </head>
+    <body>
+        <p>Highlight this <em>and this</em>.</p>
+        <script>
+            let p = document.querySelector('p');
+            let em = document.querySelector('em');
+            let range = document.createRange();
+            range.setStart(p.firstChild, 5);
+            range.setEnd(em.firstChild, 4);
+            let selection = window.getSelection();
+            selection.addRange(range);
+        </script>
+    </body>
+</html>
