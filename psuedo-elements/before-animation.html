@@ -1,0 +1,27 @@
+<head>
+    <style>
+        button {
+            text-transform: uppercase;
+            border-radius: 2px;
+            line-height: 32px;
+        }
+        button::before {
+            content: 'blinking button';
+            color: red;
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            100% {
+                opacity: 0;
+                transition-property: opacity;
+            }
+        }
+    </style>
+</head>
+<body>
+    <button></button>
+    <script>
+        button.addEventListener('animationstart', (event) => alert('animationstart fired'));
+    </script>
+</body>
