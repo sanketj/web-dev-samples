@@ -1,0 +1,20 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+        </style>
+    </head>
+    <body>
+        <div id='div1'>abc</div>
+        <div id='div2'>def</div>
+        <div id='div3'>ghi</div>
+        <script>
+            window.setTimeout(() => {
+                document.body.style.userSelect = 'none';
+            }, 5000);
+            window.setTimeout(() => {
+                document.body.style.userSelect = 'text';
+            }, 10000);
+        </script>
+    </body>
+</html>
