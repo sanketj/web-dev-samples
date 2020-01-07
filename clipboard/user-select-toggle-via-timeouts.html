@@ -1,0 +1,20 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+        </style>
+    </head>
+    <body>
+        <div>abc</div>
+        <script>
+            document.documentElement.addEventListener('mousedown', (event) => {
+                window.setTimeout(() => {
+                    event.target.style.userSelect = 'none';
+                }, 5000);
+                window.setTimeout(() => {
+                    event.target.style.userSelect = 'auto';
+                }, 10000);
+            })
+        </script>
+    </body>
+</html>
