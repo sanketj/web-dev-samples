@@ -14,13 +14,6 @@
             const span = document.createElement('span');
             document.head.append(span);
             span.append('a', 'b', 'c');
-
-            document.documentElement.addEventListener('mousedown', (event) => {
-                document.body.append('(' + event.clientX + ', ' + event.clientY + ')', document.createElement('br'));
-            });
-            document.documentElement.addEventListener('mouseup', (event) => {
-                document.body.append('(' + event.clientX + ', ' + event.clientY + ')', document.createElement('br'));
-            });
         </script>
     </body>
 </html>
