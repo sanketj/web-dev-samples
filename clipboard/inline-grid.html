@@ -1,0 +1,17 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            .grid-container {
+                display: inline-grid;
+                grid-template-areas:
+                  'header header header header header header'
+                  'menu main main main right right'
+                  'menu footer footer footer footer footer';
+            }
+        </style>
+    </head>
+    <body>
+        before<div class="grid-container"><div style="grid-area: header;">Header</div><div style="grid-area: menu;">Menu</div><div style="grid-area: main;">Main</div>  <div style="grid-area: right;">Right</div><div style="grid-area: footer;">Footer</div></div>after
+    </body>
+</html>
