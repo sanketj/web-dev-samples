@@ -1,0 +1,26 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+        </style>
+    </head>
+    <body>
+        <div></div>
+        <script>
+            let div = document.querySelector('div');
+            let tableRow1 = document.createElement('tr');
+            let tableCell1 = document.createElement('td');
+            tableCell1.append('Edge');
+            let tableCell2 = document.createElement('td');
+            tableCell2.append('Microsoft');
+            tableRow1.append(tableCell1, tableCell2);
+            let tableRow2 = document.createElement('tr');
+            let tableCell3 = document.createElement('td');
+            tableCell3.append('Chrome');
+            let tableCell4 = document.createElement('td');
+            tableCell4.append('Google');
+            tableRow2.append(tableCell3, tableCell4);
+            div.append(tableRow1, tableRow2);
+        </script>
+    </body>
+</html>
