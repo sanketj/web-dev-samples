@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            #div1 {
+                position: absolute;
+                font-size: 24px;
+            }
+
+            #div2 {
+                position: absolute;
+                text-align: right;
+                width: 95%;
+                height: 50px;
+                background-color: rgba(255, 255, 255, 1);
+            }
+        </style>
+    </head>
+    <body>
+        <div id='div1'>hidden text</div>
+        <div id='div2'>visible text</div>
+        <script>
+            let div1 = document.getElementById('div1');
+            let div2 = document.getElementById('div2');
+            div1.addEventListener('mouseover', () => {
+                debugger;
+            });
+        </script>
+    </body>
+</html>
