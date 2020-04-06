@@ -1,0 +1,105 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            my-table {
+                border-spacing: 2px;
+                display: table;
+            }
+            my-tbody {
+                display: table-row-group;
+            }
+            my-tr {
+                display: table-row;
+            }
+            my-td {
+                display: table-cell;
+                padding: 1px;
+            }
+            my-th {
+                display: table-cell;
+                font-weight: bold;
+                text-align: center;
+            }
+        </style>
+    </head>
+    <body>
+        Regular table:
+        <table>
+            <tbody>
+                <tr>
+                    <th>Browser</th>
+                    <th>Company</th>
+                </tr>
+                <tr>
+                    <td>Edge</td>
+                    <td>Microsoft</td>
+                </tr>
+                <tr>
+                    <td>Chrome</td>
+                    <td>Google</td>
+                </tr>
+                <tr>
+                    <td>Firefox</td>
+                    <td>Mozilla</td>
+                </tr>
+                <tr>
+                    <td>Safari</td>
+                    <td>Apple</td>
+                </tr>
+            </tbody>
+        </table>
+        <br>
+        Custom element table:
+        <my-table>
+            <my-tbody>
+                <my-tr>
+                    <my-th>Browser</my-th>
+                    <my-th>Company</my-th>
+                </my-tr>
+                <my-tr>
+                    <my-td>Edge</my-td>
+                    <my-td>Microsoft</my-td>
+                </my-tr>
+                <my-tr>
+                    <my-td>Chrome</my-td>
+                    <my-td>Google</my-td>
+                </my-tr>
+                <my-tr>
+                    <my-td>Firefox</my-td>
+                    <my-td>Mozilla</my-td>
+                </my-tr>
+                <my-tr>
+                    <my-td>Safari</my-td>
+                    <my-td>Apple</my-td>
+                </my-tr>
+            </my-tbody>
+        </my-table>
+        <script>
+        class MyTable extends HTMLTableElement {
+            
+        }
+        window.customElements.define('my-table', MyTable, { extends: 'table' });
+
+        class MyTableBody extends HTMLTableSectionElement {
+            
+        }
+        window.customElements.define('my-tbody', MyTableBody, { extends: 'tbody' });
+
+        class MyTableRow extends HTMLTableRowElement {
+
+        }
+        window.customElements.define('my-tr', MyTableRow, { extends: 'tr' });
+
+        class MyTableCell extends HTMLTableCellElement {
+
+        }
+        window.customElements.define('my-td', MyTableCell, { extends: 'td' });
+
+        class MyTableHeader extends MyTableCell {
+
+        }
+        window.customElements.define('my-th', MyTableHeader, { extends: 'th' });
+        </script>
+    </body>
+</html>
