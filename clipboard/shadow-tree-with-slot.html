@@ -1,0 +1,19 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+        </style>
+    </head>
+    <body>
+        <div>
+            <p slot='foo'>slotted content</p>
+        </div>
+        <script>
+            let div = document.querySelector('div');
+            div.attachShadow({ mode: 'open'});
+            let slot = document.createElement('slot');
+            slot.setAttribute('name', 'foo');
+            div.shadowRoot.append('before slot', slot, 'after slot');
+        </script>
+    </body>
+</html>
