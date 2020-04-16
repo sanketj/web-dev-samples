@@ -1,0 +1,23 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+        </style>
+    </head>
+    <body>
+        <div id='parent'>
+            x
+            <div id='child' slot='foo'></div>
+        </div>
+        <script>
+            let parent = document.getElementById('parent');
+            parent.attachShadow({mode: 'open'});
+            let slot = document.createElement('slot');
+            slot.setAttribute('name', 'foo');
+            parent.shadowRoot.append("abc", slot);
+            let child = document.getElementById('child');
+            child.attachShadow({mode: 'open'});
+            child.shadowRoot.append('def');
+        </script>
+    </body>
+</html>

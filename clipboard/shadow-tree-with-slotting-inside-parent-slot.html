@@ -1,0 +1,22 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+        </style>
+    </head>
+    <body>
+        <div id='outer'>
+            <div id='middle' slot='foo'>
+                <div id='inner' slot='foo'>inner slotted content</div>
+                middle slotted content
+            </div>
+        </div>
+        <script>
+            let outer = document.getElementById('outer');
+            outer.attachShadow({ mode: 'open'});
+            let slot = document.createElement('slot');
+            slot.setAttribute('name', 'foo');
+            outer.shadowRoot.append('before slot', slot, 'after slot');
+        </script>
+    </body>
+</html>
