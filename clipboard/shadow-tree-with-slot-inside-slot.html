@@ -12,17 +12,17 @@
         </div>
         <script>
             let outer = document.getElementById('outer');
-            outer.attachShadow({ mode: 'open'});
-            outer.shadowRoot.append('before slot', document.createElement('br'), 'abc');
+            outer.attachShadow({ mode: 'open' });
+            outer.shadowRoot.append('abc');
             let slot = document.createElement('slot');
             slot.setAttribute('name', 'foo');
             outer.shadowRoot.append(slot);
 
             let middle = document.getElementById('middle');
-            middle.attachShadow({ mode: 'open'});
+            middle.attachShadow({ mode: 'open' });
             slot = document.createElement('slot');
             slot.setAttribute('name', 'bar');
-            middle.shadowRoot.append('def', slot, 'after slot');
+            middle.shadowRoot.append('def', slot);
         </script>
     </body>
 </html>
