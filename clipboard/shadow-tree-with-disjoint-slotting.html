@@ -1,0 +1,57 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+        </style>
+    </head>
+    <body>
+        <outer-element>
+            <span slot='outerSlot'>slotted content</span>
+        </outer-element>
+        <script>
+            class InnerElement extends HTMLElement {
+                constructor() {
+                    super();
+                    const shadowRoot = this.attachShadow({ mode: 'open' });
+                    shadowRoot.innerHTML = `
+                        before inner slot
+                        <slot name='innerSlot'>inner slot fallback content</slot>
+                        after inner slot
+                    `;
+                }
+            }
+            window.customElements.define('inner-element', InnerElement);
+
+            class MiddleElement extends HTMLElement {
+                constructor() {
+                    super();
+                    const shadowRoot = this.attachShadow({ mode: 'open' });
+                    shadowRoot.innerHTML = `
+                        <inner-element>
+                            before middle slot
+                            <slot name='middleSlotOne'>middle slot one fallback content</slot>
+                            <slot name='middleSlotTwo' slot='innerSlot'>middle slot two fallback content</slot>
+                            after middle slot
+                        </inner-element>
+                    `;
+                }
+            }
+            window.customElements.define('middle-element', MiddleElement);
+
+            class OuterElement extends HTMLElement {
+                constructor() {
+                    super();
+                    const shadowRoot = this.attachShadow({ mode: 'open' });
+                    shadowRoot.innerHTML = `
+                        <middle-element>
+                            before outer slot
+                            <slot name='outerSlot' slot='middleSlotOne'>outer slot fallback content</slot>
+                            after outer slot
+                        </middle-element>
+                    `;
+                }
+            }
+            window.customElements.define('outer-element', OuterElement);
+        </script>
+    </body>
+</html>
