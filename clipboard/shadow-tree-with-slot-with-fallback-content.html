@@ -1,0 +1,18 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+        </style>
+    </head>
+    <body>
+        <div></div>
+        <script>
+            let div = document.querySelector('div');
+            div.attachShadow({ mode: 'open'});
+            let slot = document.createElement('slot');
+            slot.setAttribute('name', 'foo');
+            slot.append('fallback content');
+            div.shadowRoot.append('before slot ', slot, ' after slot');
+        </script>
+    </body>
+</html>

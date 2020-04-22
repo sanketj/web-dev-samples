@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+        </style>
+    </head>
+    <body>
+        <outer-element></outer-element>
+        <script>
+            class InnerElement extends HTMLElement {
+                constructor() {
+                    super();
+                    const shadowRoot = this.attachShadow({ mode: 'open' });
+                    shadowRoot.innerHTML = `
+                        before inner slot
+                        <slot name='innerSlot'></slot>
+                        after inner slot
+                    `;
+                }
+            }
+            window.customElements.define('inner-element', InnerElement);
+
+            class OuterElement extends HTMLElement {
+                constructor() {
+                    super();
+                    const shadowRoot = this.attachShadow({ mode: 'open' });
+                    shadowRoot.innerHTML = `
+                        <inner-element>
+                            before outer slot
+                            <span slot='innerSlot'>slotted content</span>
+                            <slot name='outerSlot' slot='innerSlot'></slot>
+                            after outer slot
+                        </inner-element>
+                    `;
+                }
+            }
+            window.customElements.define('outer-element', OuterElement);
+        </script>
+    </body>
+</html>
