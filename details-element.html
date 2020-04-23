@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+        </style>
+    </head>
+    <body>
+        <details></details>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <details open>some details</details>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <details><summary>here's a summary</summary>some details</details>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <details open><summary><span id='summarySpan'>here's a slotted summary</span></summary></span>some details</details>
+        <script>
+            let span = document.getElementById('summarySpan');
+            let shadowRoot = span.attachShadow({mode: 'open'});
+            shadowRoot.innerHTML = `<slot>here's a fallback summary<slot>`;
+        </script>
+    </body>
+</html>
