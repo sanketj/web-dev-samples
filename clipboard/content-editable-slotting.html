@@ -1,0 +1,18 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            div {
+                border: 1px solid black;
+            }
+        </style>
+    </head>
+    <body>
+        <div contenteditable="true"></div>
+        <script>
+            let div = document.querySelector('div');
+            let divShadowRoot = div.attachShadow({mode: 'open'});
+            divShadowRoot.innerHTML = '<slot></slot>';
+        </script>
+    </body>
+</html>
