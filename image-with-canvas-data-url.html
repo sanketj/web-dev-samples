@@ -1,0 +1,17 @@
+﻿<!DOCTYPE html>
+<html>
+    <body>
+        <canvas style='background-color: green;'></canvas>
+        <img></img>
+        <script>
+            let canvas = document.querySelector('canvas');
+            let ctx = canvas.getContext('2d');
+            ctx.font = '30px Arial';
+            ctx.strokeText('Click for Bing',10,50);
+            window.onload = () => {
+                let img = document.querySelector('img');
+                img.setAttribute('src', canvas.toDataURL());
+            };
+        </script>
+    </body>
+</html>
