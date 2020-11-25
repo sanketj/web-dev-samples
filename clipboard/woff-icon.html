@@ -1,0 +1,24 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            @font-face {
+                font-family: 'test-font';
+                src: url('../woff-sample.woff') format('woff');
+            }
+        </style>
+    </head>
+    <body>
+        <div>
+            <span>before text</span>
+            <span id='target' style='font-family: test-font;'></span>
+            <span>after text</span>
+        </div>
+        <script>
+            let span = document.getElementById('target');
+            span.append(document.createElement('br'));
+            span.append(String.fromCharCode(59323));
+            span.append(document.createElement('br'));
+        </script>
+    </body>
+</html>
