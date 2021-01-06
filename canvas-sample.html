@@ -1,0 +1,20 @@
+﻿<!DOCTYPE HTML>
+<html>
+  <head>
+    <style>
+    </style>
+  </head> 
+  <body>
+    before text
+    <canvas id="myCanvas" width="578" height="200"></canvas>
+    <span style="position: relative; left: -250px;">after text</span>
+    <script>
+      var canvas = document.getElementById('myCanvas');
+      var context = canvas.getContext('2d');
+
+      context.font = '40pt Calibri';
+      context.fillStyle = 'blue';
+      context.fillText('Hello World!', 150, 100);
+    </script>
+  </body>
+</html>
