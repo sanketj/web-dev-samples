@@ -12,6 +12,7 @@
   </head>
 <body>
     <div>abd</div>
+    <input type='button' value='click' onclick='onClick()'>
     <script>
       let div = document.querySelector('div');
       let textNode = div.firstChild;
@@ -20,8 +21,10 @@
       range.setEnd(textNode, 3);
       let highlight = new HighlightRangeGroup(range);
       CSS.highlights.set('test', highlight);
-      debugger;
-      textNode.insertData(2, 'c');
+
+      function onClick() {
+        textNode.insertData(2, 'c');
+      }
     </script>
 </body>
 </html>
