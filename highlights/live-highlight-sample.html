@@ -14,13 +14,13 @@
     <div>abd</div>
     <script>
       let div = document.querySelector('div');
+      let textNode = div.firstChild;
       let range = new Range();
-      range.setStart(div, 1);
-      range.setEnd(div, 3);
+      range.setStart(textNode, 1);
+      range.setEnd(textNode, 3);
       let highlight = new HighlightRangeGroup(range);
       CSS.highlights.set('test', highlight);
       debugger;
-      let textNode = div.firstChild;
       textNode.insertData(2, 'c');
     </script>
 </body>
