@@ -1,0 +1,22 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      div::highlight(test) {
+        background-color: red;
+      }
+    </style>
+  </head>
+<body>
+    <div>abd</div>
+    <script>
+      let range = new StaticRange({startContainer: div, startOffset: 1, endContainer: div, endOffset: 3});
+      let highlight = new HighlightRangeGroup(range);
+      CSS.highlight.set(highlight);
+      debugger;
+      let div = document.querySelector('div');
+      let textNode = div.firstChild;
+      textNode.insertData(2, 'c');
+    </script>
+</body>
+</html>
