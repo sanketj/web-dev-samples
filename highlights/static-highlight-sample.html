@@ -13,7 +13,7 @@
       let div = document.querySelector('div');
       let range = new StaticRange({startContainer: div, startOffset: 1, endContainer: div, endOffset: 3});
       let highlight = new HighlightRangeGroup(range);
-      CSS.highlight.set(highlight);
+      CSS.highlight.set('test', highlight);
       debugger;
       let textNode = div.firstChild;
       textNode.insertData(2, 'c');
