@@ -10,13 +10,13 @@
 <body>
     <div>abd</div>
     <script>
+      let div = document.querySelector('div');
       let range = new Range();
       range.setStart(div, 1);
       range.setEnd(div, 3);
       let highlight = new HighlightRangeGroup(range);
       CSS.highlight.set(highlight);
       debugger;
-      let div = document.querySelector('div');
       let textNode = div.firstChild;
       textNode.insertData(2, 'c');
     </script>
