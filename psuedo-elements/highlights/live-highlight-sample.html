@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      div {
+        background-color: green;
+      }
+      div::highlight(test) {
+        background-color: red;
+      }
+    </style>
+  </head>
+<body>
+    <div>abd</div>
+    <input type='button' value='click' onclick='onClick()'>
+    <script>
+      let div = document.querySelector('div');
+      let textNode = div.firstChild;
+      let range = new Range();
+      range.setStart(textNode, 1);
+      range.setEnd(textNode, 3);
+      let highlight = new HighlightRangeGroup(range);
+      CSS.highlights.set('test', highlight);
+
+      function onClick() {
+        textNode.insertData(2, 'c');
+      }
+    </script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    html {
+      border: 2px red solid;
+
+      /* Setting any overflow value other than visible here will cause the html element's overflow value to propogate to the viewport.*/
+      /* As a result, the html element's used overflow value will become visible and the body's used overflow value will be hidden. */
+      /* If the html element's overflow value is visible (in both directions), the body element's overflow value will propogate to the viewport, */
+      /* and the body element's used overflow value will become visible. */
+
+      /* overflow-x: scroll; */
+    }
+
+    body {
+      border: 2px purple solid;
+      height: 50px;
+      overflow-y: hidden;
+    }
+
+    #outerDiv {
+      border: 2px green solid;
+    }
+
+    #innerDiv {
+      border: 2px blue solid;
+    }
+  </style>
+</head>
+<body>
+    text inside body
+    <div id="outerDiv">
+        outer div text
+        <div id="innerDiv">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+            cillum dolore eu fugiat nulla pariatur.
+        </div>
+    </div>
+    <script>
+        document.documentElement.insertBefore(document.createTextNode('text outside body'), document.body);
+    </script>
+</body>
+</html>
