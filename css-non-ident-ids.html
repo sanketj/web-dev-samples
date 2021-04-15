@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            #\+ {
+                color: red;
+            }
+            #\  {
+                color: red;
+            }
+            #\31 \32 \33 {
+                color: red;
+            }
+            #--foo {
+                color: red;
+            }
+            #\002b {
+                color: red;
+            }
+            #\dc00 {
+                color: red;
+            }
+        </style>
+    </head>
+    <body>
+        <div>abc</div>
+        <script>
+            let div = document.querySelector('div');
+            div.setAttribute('id', '+');
+            // div.setAttribute('id', ' ');
+            // div.setAttribute('id', '123');
+            // div.setAttribute('id', '--foo');
+            // div.setAttribute('id', '\u002b')
+            // div.setAttribute('id', '\udc00');
+        </script>
+    </body>
+</html>
