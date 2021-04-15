@@ -17,8 +17,10 @@
       let div = document.querySelector('div');
       let textNode = div.firstChild;
       let range = new StaticRange({startContainer: textNode, startOffset: 1, endContainer: textNode, endOffset: 3});
-      let highlight = new HighlightRangeGroup(range);
-      CSS.highlights.set('test', highlight);
+      // let highlight = new HighlightRangeGroup(range);
+      // CSS.highlights.set('test', highlight);
+      let highlight = new Highlight('test', range);
+      CSS.highlights.add(highlight);
 
       function onClick() {
         textNode.insertData(2, 'c');

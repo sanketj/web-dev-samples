@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      div::highlight(\+) {
+        color:red;
+      }
+    </style>
+  </head>
+<body>
+    <div>abd</div>
+    <script>
+      let div = document.querySelector('div');
+      let textNode = div.firstChild;
+      let range = new StaticRange({startContainer: textNode, startOffset: 1, endContainer: textNode, endOffset: 2});
+      let highlightOne = new Highlight('one', range);
+      CSS.highlights.add(highlightOne);
+      let highlightSpace = new Highlight(' ', range);
+      CSS.highlights.add(highlightSpace);
+      let highlightPlus = new Highlight('+', range);
+      CSS.highlights.add(highlightPlus);
+      console.log(window.getComputedStyle(div, 'highlight(one)').color);
+      console.log(window.getComputedStyle(div, 'highlight( )').color);
+      console.log(window.getComputedStyle(div, 'highlight(\+)').color);
+    </script>
+</body>
+</html>
