@@ -10,15 +10,15 @@
     </head>
     <body>
         <!-- Search for: climbng paths -->
-        <div>1 Mount Everest is Earth's highest mountain above sea level, located in the Mahalangur Himal sub-range of the Himalayas. The China Nepal
+        <div> 1 Mount Everest is Earth's highest mountain above sea level, located in the Mahalangur Himal sub-range of the Himalayas. The China Nepal
 border runs across its summit point. Its elevation (snow height) of 8,848.86 m (29,031.7 ft) was most recently established in 2020 by the Nepali and Chinese
 authorities. Mount Everest attracts many climbers, some of them highly experienced mountaineers. There are two main <i>climbing routes</i>, one approaching the
 summit from the southeast in Nepal (known as the 'standard route') and the other from the north in Tibet. While not posing substantial technical
 climbing challenges on the standard route, Everest presents dangers such as altitude sickness, weather, and wind, as well as significant hazards from avalanches
 and the Khumbu Icefall. As of 2019, over 300 people have died on Everest, many of whose bodies remain on the mountain.
-<span>climbng paths</span> <span>climbng paths</span> <span>climbng paths</span> </div>
+<span>climbng paths</span> <span>climbng paths</span> <span>climbng paths</span></div>
         <iframe src="find-on-page-in-iframe-sample.html"></iframe>
-        <div>3 Mount Everest is Earth's highest mountain above sea level, located in the Mahalangur Himal sub-range of the Himalayas. The China Nepal
+        <div> 3 Mount Everest is Earth's highest mountain above sea level, located in the Mahalangur Himal sub-range of the Himalayas. The China Nepal
 border runs across its summit point. Its elevation (snow height) of 8,848.86 m (29,031.7 ft) was most recently established in 2020 by the Nepali and Chinese
 authorities. Mount Everest attracts many climbers, some of them highly experienced mountaineers. There are two main climbing routes, one approaching the
 summit from the southeast in Nepal (known as the 'standard route') and the other from the north in Tibet. While not posing substantial technical
@@ -27,9 +27,10 @@ and the Khumbu Icefall. As of 2019, over 300 people have died on Everest, many o
 climbng paths climbng paths climbng paths </div>
         <script>
             window.setTimeout(() => {
+                let span = document.createElement('span');
+                span.append('climbng paths');
                 let div = document.querySelector('div');
-                let span = document.querySelector('span');
-                div.append(span);
+                div.append(' ', span);
             }, 10000);
         </script>
     </body>
