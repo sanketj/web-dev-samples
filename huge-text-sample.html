@@ -6534,18 +6534,6 @@ Elements from other namespaces whose semantics are primarily metadata-related (e
 
 Thus, in the XML serialization, one can use RDF, like this:
 
-<html xmlns="www.w3.org/1999/xhtml"
-xmlns:r="www.w3.org/1999/02/22-rdf-syntax-ns#" xml:lang="en">
-
-
-
-<Person xmlns="www.w3.org/2000/10/swap/pim/contact#"
-    r:about="https://hedral.example.com/#">
-
-
-
-
-
 
 
 
@@ -7091,9 +7079,7 @@ The style IDL attribute is defined in CSS Object Model. [CSSOM]
 
 In the following example, the words that refer to colors are marked up using the span element and the style attribute to make those words show up in the relevant colors in visual media.
 
-My sweat suit is <span style="color: green; background:
-transparent">green and my eyes are <span style="color: blue;
-background: transparent">blue
+My sweat suit is blue
 3.2.6.6 Embedding custom non-visible data with the data-* attributes
 ✔MDN
 A custom data attribute is an attribute in no namespace whose name starts with the string "data-", has at least one character after the hyphen, is XML-compatible, and contains no ASCII upper alphas.
@@ -15136,8 +15122,6 @@ It is important to use a separate domain so that if the attacker convinces the u
 
 In this example, a gadget from another site is embedded. The gadget has scripting and forms enabled, and the origin sandbox restrictions are lifted, allowing the gadget to communicate with its originating server. The sandbox is still useful, however, as it disables plugins and popups, thus reducing the risk of the user being exposed to malware and other annoyances.
 
-<iframe sandbox="allow-same-origin allow-forms allow-scripts"
-src="https://maps.example.com/embedded.html">
 Suppose a file A contained the following fragment:
 
 
@@ -15228,8 +15212,6 @@ The contentWindow IDL attribute must return the WindowProxy object of the iframe
 
 Here is an example of a page using an iframe to include advertising from an advertising broker:
 
-<iframe src="https://ads.example.com/?customerid=923513721&amp;format=banner"
-width="468" height="60">
 4.8.6 The embed element
 ✔MDN✔MDN
 Categories:
@@ -20006,19 +19988,6 @@ Multiple controls can have the same name; for example, here we give all the chec
 
 Given the settings in the previous section, this all becomes:
 
-<form method="post"
-enctype="application/x-www-form-urlencoded"
-action="https://pizza.example.com/order.cgi">
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -20040,12 +20009,6 @@ This section is non-normative.
 
 Forms can be annotated in such a way that the user agent will check the user's input before the form is submitted. The server still has to verify the input is valid (since hostile users can easily bypass the form validation), but it allows the user to avoid the wait incurred by having the server be the sole checker of the user's input.
 
-The simplest annotation is the required attribute, which can be specified on input elements to indicate that the form is not to be submitted until a value is given. By adding this attribute to the customer name, pizza size, and delivery time fields, we allow the user agent to notify the user when the user submits the form without filling in those fields:
-
-<form method="post"
-enctype="application/x-www-form-urlencoded"
-action="https://pizza.example.com/order.cgi">
-
 
 
 
@@ -20066,10 +20029,6 @@ action="https://pizza.example.com/order.cgi">
 
 
 It is also possible to limit the length of the input, using the maxlength attribute. By adding this to the textarea element, we can limit users to 1000 characters, preventing them from writing huge essays to the busy delivery drivers instead of staying focused and to the point:
-
-<form method="post"
-enctype="application/x-www-form-urlencoded"
-action="https://pizza.example.com/order.cgi">
 
 
 
@@ -20099,23 +20058,6 @@ Some browsers attempt to aid the user by automatically filling form controls rat
 
 To help the user agent with this, the autocomplete attribute can be used to describe the field's purpose. In the case of this form, we have three fields that can be usefully annotated in this way: the information about who the pizza is to be delivered to. Adding this information looks like this:
 
-<form method="post"
-enctype="application/x-www-form-urlencoded"
-action="https://pizza.example.com/order.cgi">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -20128,37 +20070,6 @@ This section is non-normative.
 Some devices, in particular those with virtual keyboards can provide the user with multiple input modalities. For example, when typing in a credit card number the user may wish to only see keys for digits 0-9, while when typing in their name they may wish to see a form field that by default capitalizes each word.
 
 Using the inputmode attribute we can select appropriate input modalities:
-
-<form method="post"
-enctype="application/x-www-form-urlencoded"
-action="https://pizza.example.com/order.cgi">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-4.10.1.7 The difference between the field type, the autofill field name, and the input modality
-This section is non-normative.
-
-The type, autocomplete, and inputmode attributes can seem confusingly similar. For instance, in all three cases, the string "email" is a valid value. This section attempts to illustrate the difference between the three attributes and provides advice suggesting how to use them.
-
-The type attribute on input elements decides what kind of control the user agent will use to expose the field. Choosing between different values of this attribute is the same choice as choosing whether to use an input element, a textarea element, a select element, etc.
 
 The autocomplete attribute, in contrast, describes what the value that the user will enter actually represents. Choosing between different values of this attribute is the same choice as choosing what the label for the element will be.
 
@@ -21836,16 +21747,6 @@ Constraint validation: If the element is required, and its value IDL attribute a
 The following form has two required fields, one for an email address and one for a password. It also has a third field that is only considered valid if the user types the same password in the password field and this third field.
 
 
-<form action="/newaccount" method=post
-oninput="up2.setCustomValidity(up2.value != up.value ? 'Passwords do not match.' : '')">
-
-
-
-
-
-
-
-
 
 
 
@@ -23187,13 +23088,6 @@ Yours Sincerely,
 ...
 A placeholder can be given as well, to suggest the basic form to the user, without providing an explicit template:
 
-<textarea placeholder="Dear Francine,
-
-They closed the parks this week, so we won't be able to
-meet your there. Should we just have dinner?
-
-Love,
-Daddy">
 To have the browser submit the directionality of the element along with the value, the dirname attribute can be specified:
 
 If you have any comments, please let us know (you may use either English or Hebrew for your comments):
@@ -30688,8 +30582,7 @@ For short inline annotations, the title attribute could be used.
 In this example, two parts of a dialogue are annotated with footnote-like content using the title attribute.
 
 : Hello! I wish to register a complaint. Hello. Miss?
-: <span title="Colloquial pronunciation of 'What do you'"
->Watcha mean, miss?
+: Watcha mean, miss?
 : Uh, I'm sorry, I have a cold. I wish to make a complaint.
 we're
 closing for lunch.
@@ -31067,10 +30960,6 @@ Here a rating is given using a meter element.
 
 
 
-
-<div itemprop="aggregateRating"
-itemscope itemtype="schema.org/AggregateRating">
-
 (based on  customer reviews)
 
 
@@ -31175,16 +31064,6 @@ The exact meaning of the URLs given in itemid attributes depends on the vocabula
 
 Here, an item is talking about a particular book:
 
-<dl itemscope
-itemtype="https://vocab.example.net/book"
-itemid="urn:isbn:0-330-34032-8">
-Title
-The Reality Dysfunction
-Author
-Peter F. Hamilton
-Publication date
-
-
 The "https://vocab.example.net/book" vocabulary in this example would define that the itemid attribute takes a urn: URL pointing to the ISBN of the book.
 
 5.1.5 Selecting names when defining vocabularies
@@ -31203,9 +31082,7 @@ Here, an item is an "https://example.org/animals#cat", and most of the propertie
 
 
 Hedral is a male American domestic
-shorthair, with a fluffy <span
-itemprop="https://example.com/color">black fur with <span
-itemprop="https://example.com/color">white
+shorthair, with a fluffy
 
 
 This example has one item with the type "https://example.org/animals#cat" and the following properties:
@@ -31294,8 +31171,6 @@ Each item that uses this vocabulary can be given one or more of these types, dep
 
 Thus, a locomotive might be marked up as:
 
-<dl itemscope itemtype="https://md.example.com/loco
-                https://md.example.com/lighting">
 Name:
 Tank Locomotive (DB 80)
 Product code:
@@ -31307,8 +31182,6 @@ Delta
 
 A turnout lantern retrofit kit might be marked up as:
 
-<dl itemscope itemtype="https://md.example.com/track
-                https://md.example.com/lighting">
 Name:
 Turnout Lantern Kit
 Product code:
@@ -32201,11 +32074,7 @@ This example shows a site's contact details (using the address element) containi
 
 
 The vCard vocabulary can be used to just mark up people's names:
-
-<span itemscope itemtype="microformats.org/profile/hcard"
-><span itemprop="given-name"
->George</span
->
+George
 This creates a single item with a two name-value pairs, one with the name "fn" and the value "George Washington", and the other with the name "n" and a second item as its value, the second item having the two name-value pairs "given-name" and "family-name" with the values "George" and "Washington" respectively. This is defined to map to the following vCard:
 
 BEGIN:VCARD
@@ -32530,22 +32399,6 @@ This section is non-normative.
 Here is an example of a page that uses the vEvent vocabulary to mark up an event:
 
 
-...
-
-...
-
-(until )
-...
-<a href="livebrum.co.uk/2009/05/05/bluesday-tuesday-money-road"
-rel="bookmark" itemprop="url">Link to this page
-...
-
-...
-<input type=button value="Add to Calendar"
-    onclick="location = getCalendar(this)">
-...
-
-
 The getCalendar() function is left as an exercise for the reader.
 
 The same page could offer some markup, such as the following, for copy-and-pasting into blogs:
@@ -32553,11 +32406,6 @@ The same page could offer some markup, such as the following, for copy-and-pasti
 
 I'm going to
 ,
-
-to ,
-at 
-<a href="livebrum.co.uk/2009/05/05/bluesday-tuesday-money-road"
-itemprop="url">See this event on livebrum.co.uk
 
 
 5.3.3 Licensing works
@@ -32597,15 +32445,6 @@ This section is non-normative.
 This example shows an embedded image entitled My Pond, licensed under the Creative Commons Attribution-Share Alike 4.0 International License and the MIT license simultaneously.
 
 
-
-
-
-Licensed under the <a itemprop="license"
-href="https://creativecommons.org/licenses/by-sa/4.0/">Creative
-Commons Attribution-Share Alike 4.0 International License
-and the <a itemprop="license"
-href="www.opensource.org/licenses/mit-license.php">MIT
-license
 
 
 5.4 Converting HTML to other formats
@@ -33612,8 +33451,6 @@ User agents can provide users with a list of the keyboard shortcuts, but authors
 
 In this example, an author has provided a button that can be invoked using a shortcut key. To support full keyboards, the author has provided "C" as a possible key. To support devices equipped only with numeric keypads, the author has provided "1" as another possible key.
 
-<input type=button value=Collect onclick="collect()"
-accesskey="C 1" id=c>
 To tell the user what the shortcut key is, the author has this script here opted to explicitly add the key combination to the button's label:
 
 function addShortcutKeyLabel(button) {
@@ -45546,9 +45383,9 @@ An html element's start tag may be omitted if the first thing inside the html el
 For example, in the following case it's ok to remove the "" tag:
 Comments must have the following format:
 
-The string "<!--".
+The string ".
 Optionally, text, with the additional restriction that the text must not start with the string ">", nor start with the string "->", nor contain the strings "", nor end with the string "<!-".
-The string "-->".
+The string ".
 The text is allowed to end with the string ".
 
 13.2 Parsing HTML documents
@@ -45645,7 +45482,7 @@ This error occurs if the parser encounters the end of the input stream in text t
 Syntactic structures that resemble HTML comments in script elements are parsed as text content. They can be a part of a scripting language-specific syntactic structure or be treated as an HTML-like comment, if the scripting language supports them (e.g., parsing rules for HTML-like comments can be found in Annex B of the JavaScript specification). The common reason for this error is a violation of the restrictions for contents of script elements. [JAVASCRIPT]
 
 eof-in-tag	
-This error occurs if the parser encounters the end of the input stream in a start tag or an end tag (e.g., <div id=). Such a tag is ignored.
+This error occurs if the parser encounters the end of the input stream in a start tag or an end tag (e.g., i. Such a tag is ignored.
 
 incorrectly-closed-comment	
 This error occurs if the parser encounters a comment that is closed by the "--!>" code point sequence. The parser treats such comments as if they are correctly closed by the "-->" code point sequence.
@@ -45761,7 +45598,7 @@ Code points that trigger this error are usually a part of another syntactic cons
 For example, consider the following markup:
 
 
-Due to a forgotten U+003E (>) code point after foo the parser treats this markup as a single div element with a "foo<div" attribute.
+Due to a forgotten U+003E (>) code point after foo the parser treats this markup as a single div element with a "foo" attribute.
 
 As another example of this error, consider the following markup:
 
@@ -45939,7 +45776,7 @@ Loop: If position points to:
 A sequence of bytes starting with: 0x3C 0x21 0x2D 0x2D ()
 Advance the position pointer so that it points at the first 0x3E byte which is preceded by two 0x2D bytes (i.e. at the end of an ASCII '-->' sequence) and comes after the 0x3C byte that was found. (The two 0x2D bytes can be the same as those in the ' sequence.)
 
-A sequence of bytes starting with: 0x3C, 0x4D or 0x6D, 0x45 or 0x65, 0x54 or 0x74, 0x41 or 0x61, and one of 0x09, 0x0A, 0x0C, 0x0D, 0x20, 0x2F (case-insensitive ASCII '<meta' followed by a space or slash)
+A sequence of bytes starting with: 0x3C, 0x4D or 0x6D, 0x45 or 0x65, 0x54 or 0x74, 0x41 or 0x61, and one of 0x09, 0x0A, 0x0C, 0x0D, 0x20, 0x2F (case-insensitive ASCII ' followed by a space or slash)
 Advance the position pointer so that it points at the next 0x09, 0x0A, 0x0C, 0x0D, 0x20, or 0x2F byte (the one in sequence of characters matched above).
 
 Let attribute list be an empty list of strings.
@@ -49681,7 +49518,7 @@ The tool may annotate the output with any namespace declarations required for pr
 
 If the XML API being used restricts the allowable characters in the local names of elements and attributes, then the tool may map all element and attribute local names that the API wouldn't support to a set of names that are allowed, by replacing any character that isn't supported with the uppercase letter U and the six digits of the character's code point when expressed in hexadecimal, using digits 0-9 and capital letters A-F as the symbols, in increasing numeric order.
 
-For example, the element name foo<bar, which can be output by the HTML parser, though it is neither a legal HTML element name nor a well-formed XML element name, would be converted into fooU00003Cbar, which is a well-formed XML element name (though it's still not legal in HTML by any means).
+For example, the element name foo, which can be output by the HTML parser, though it is neither a legal HTML element name nor a well-formed XML element name, would be converted into fooU00003Cbar, which is a well-formed XML element name (though it's still not legal in HTML by any means).
 
 As another example, consider the attribute xlink:href. Used on a MathML element, it becomes, after being adjusted, an attribute with a prefix "xlink" and a local name "href". However, used on an HTML element, it becomes an attribute with no prefix and the local name "xlink:href", which is not a valid NCName, and thus might not be accepted by an XML API. It could thus get converted, becoming "xlinkU00003Ahref".
 
