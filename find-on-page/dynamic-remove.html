@@ -1,0 +1,15 @@
+﻿<!DOCTYPE html>
+<html>
+    <body>
+        <div><span>climbing paths</span> <span>climbing paths</span> <span>climbing paths</span></div>
+        <script>
+            // Search for "climbing paths" within 5 seconds
+            window.setTimeout(() => {
+                let spanOne = document.querySelector('span');
+                let spanTwo = document.querySelectorAll('span')[1];
+                let spanThree = document.querySelectorAll('span')[2];
+                spanTwo.remove();
+            }, 5000);
+        </script>
+    </body>
+</html>
