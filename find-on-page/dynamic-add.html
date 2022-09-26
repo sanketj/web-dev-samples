@@ -1,0 +1,20 @@
+﻿<!DOCTYPE html>
+<html>
+    <body>
+        <!-- Search for: climbng paths -->
+        <div><span>climbng paths</span> <span>climbng paths</span> <span>climbng paths</span></div>
+        <script>
+            // Search for "climbng paths" within 5 seconds
+            window.setTimeout(() => {
+                let spanOne = document.querySelector('span');
+                let spanTwo = document.querySelectorAll('span')[1];
+                let spanThree = document.querySelectorAll('span')[2];
+                let newSpan = document.createElement('span');
+                newSpan.append('climbng paths');
+                let div = document.querySelector('div');
+                div.insertBefore(newSpan, spanOne);
+                div.insertBefore(new Text(' '), spanOne);
+            }, 5000);
+        </script>
+    </body>
+</html>
