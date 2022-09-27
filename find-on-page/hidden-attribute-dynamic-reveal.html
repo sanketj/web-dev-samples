@@ -1,0 +1,14 @@
+﻿<!DOCTYPE html>
+<html>
+    <body>
+        <p>This content should be read right now, as it is important. I am so glad you are able to find it!</p>
+        <p hidden>This content is not relevant to this page right now, so should not be seen. Nothing to see here. Nada.</p>
+        <script>
+            // Search for "content" within 5 seconds
+            let p2 = document.querySelectorAll('p')[1];
+            window.setTimeout(() => {
+                p2.hidden = false;
+            }, 5000);
+        </script>
+    </body>
+</html>
