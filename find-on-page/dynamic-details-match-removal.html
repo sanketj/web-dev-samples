@@ -1,0 +1,19 @@
+﻿<!DOCTYPE html>
+<html>
+    <body>
+        Something small enough to escape casual notice.
+        <details>
+            <summary>Details</summary>
+            <details>
+                <summary>Details</summary>
+                Something small enough to escape <span>casual</span> notice.
+            </details>
+        </details>
+        <script>
+            let span = document.querySelector('span');
+            window.setTimeout(() => {
+                span.remove();
+            }, 5000);
+        </script>
+    </body>
+</html>
