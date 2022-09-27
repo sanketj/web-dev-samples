@@ -1,0 +1,26 @@
+<html>
+<head>
+    <style>
+        iframe {
+            background-color: white;
+        }
+    </style>
+</head>
+<body>
+<input type='button' value='click' onclick='onClick()' />
+<div style="height: 500px">match</div>
+
+<iframe src="find-next-scoping-hang-inner.html" height="200" width="300"></iframe>
+<script>
+  let div = document.querySelector('div');
+  let interval_id = window.setInterval(() => {
+	for (let i = 0; i < 5000; i++) {
+	  div.append(' ', 'mat-ch');
+	}
+  }, 10);
+  function onClick() {
+    window.clearInterval(interval_id);
+  }
+</script>
+</body>
+</html>

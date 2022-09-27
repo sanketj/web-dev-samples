@@ -1,0 +1,18 @@
+<html>
+
+<body>
+<input type='button' value='click' onclick='onClick()' />
+<div>match match</div>
+<script>
+  let div = document.querySelector('div');
+  let interval_id = window.setInterval(() => {
+	for (let i = 0; i < 5000; i++) {
+	  div.append(' ', 'mat-ch');
+	}
+  }, 10);
+  function onClick() {
+    window.clearInterval(interval_id);
+  }
+</script>
+</body>
+</html>
