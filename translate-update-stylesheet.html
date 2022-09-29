@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            div:first-child {
+                display: none;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- Translate within 5 seconds of page load. -->
+        <div>Posteriormente, a partir de 1933 adoptó una postura más cercana al socialismo y en su programa político optó por un intervencionismo de Estado en ámbitos como la economía, la educación y la industria.</div>
+        <div>En su segunda etapa también se efectuó la «semicorporativización de las masas», con la creación de confederaciones y otras organizaciones de obreros, campesinos y empleados públicos. El Partido Nacional Revolucionario (PNR) fue un partido político mexicano activo entre 1929 y 1938.</div>
+        <script>
+            let div = document.querySelector('div');
+            window.setTimeout(() => {
+                const newSheet = new CSSStyleSheet();
+                newSheet.replaceSync('div:first-child { display: block; }');
+                document.adoptedStyleSheets = [newSheet];
+            }, 5000);
+        </script>
+    </body>
+</html>
