@@ -1,0 +1,12 @@
+﻿<!DOCTYPE html>
+<html>
+    <body>
+        <div>abc<span style="visibility: visible">def</span>ghi</div>
+        <script>
+            let span = document.querySelector("span");
+            window.setTimeout(() => {
+                span.style.visibility = "hidden";
+            }, 5000);
+        </script>
+    </body>
+</html>
