@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style></style>
+    </head>
+    <body>
+        <div></div>
+        <script>
+            let div = document.querySelector('div');
+            let shadowRoot = div.attachShadow({mode: 'open'});
+            let shadowDiv = document.createElement('div');
+            shadowDiv.innerHTML = '<span>abc</span>';
+            shadowRoot.append(shadowDiv);
+        </script>
+    </body>
+</html>
