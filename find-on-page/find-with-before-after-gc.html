@@ -2,15 +2,18 @@
 <html>
     <head>
         <style>
-            div::before {
+            div::before,
+            span::before {
                 content: "before ";
             }
-            div::after {
+            div::after,
+            span::after {
                 content: " after";
             }
         </style>
     </head>
     <body>
         <div>middle</div>
+        <div>outer <span>middle</span> inner</div>
     </body>
 </html>
