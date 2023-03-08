@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <script>
+            const promise1 = new Promise((resolve, reject) => {
+                console.log('Promise 1 started');
+                setTimeout(() => {
+                    const input = new Blob([ '<p>Some HTML</p>'], {type: 'text/html'});
+                    resolve(input);
+                }, 30000);
+            });
+            promise1.then(() => {
+                console.log('Promise 1 resolved');
+            }, () => {
+                console.log('Promise 1 rejected');
+            });
+            const promise2 = new Promise((resolve, reject) => {
+                console.log('Promise 2 started');
+                setTimeout(() => {
+                    const input = new Blob(['Some text'], {type: 'text/plain'});
+                    resolve(input);
+                }, 1000);
+            });
+            promise2.then(() => {
+                console.log('Promise 2 resolved');
+            }, () => {
+                console.log('Promise 2 rejected');
+            });
+            const clipboardItem = new ClipboardItem({
+                'text/html': promise1,
+                'text/plain': promise2
+            });
+            navigator.clipboard.write([clipboardItem]);
+        </script>
+    </body>
+</html>
