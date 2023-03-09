@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <script>
+            const clipboardItem = new ClipboardItem({
+                'text/html': () => {
+                    return new Blob(['<p>Some HTML</p>'], {type: 'text/html'});
+                },
+                'text/plain': new Promise((resolve, reject) => {
+                    const input = new Blob(['Some text'], {type: 'text/plain'});
+                    resolve(input);
+                })
+            });
+            navigator.clipboard.write([clipboardItem]);
+        </script>
+    </body>
+</html>
