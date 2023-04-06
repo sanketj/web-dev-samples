@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <!--- Click the button within 5s of page load. --->
+        <input type='button' value='click' onclick='onClick()' />
+        <div>abc<span>123</span>def</div>
+        <script>
+            function onClick() {
+                let span = document.querySelector('span');
+                let range = new Range();
+                range.selectNode(span);
+                let selection = window.getSelection();
+                selection.removeAllRanges();
+                selection.addRange(range);
+            }
+
+            window.setTimeout(() => {
+                let selection = window.getSelection();
+                navigator.clipboard.writeText(selection.toString());
+            }, 5000);
+        </script>
+    </body>
+</html>
