@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <div>abc<span>123</span>def</div>
+        <script>
+            let span = document.querySelector('span');
+            let range = new Range();
+            range.selectNode(span);
+            let selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            let copied = document.execCommand('copy');
+            console.log(copied);
+        </script>
+    </body>
+</html>
