@@ -1,0 +1,18 @@
+﻿<!DOCTYPE html>
+<html>
+    <body>
+        <select>
+            <option>ABC</option>
+            <option>DEF</option>
+            <option>GHI</option>
+        </select>
+        <script>
+            var select = document.querySelector('select');
+            var option = document.createElement('option');
+            option.textContent = '123';
+            window.setTimeout(() => {
+                select.insertBefore(option, select.firstElementChild.nextElementSibling);
+            }, 5000);
+        </script>
+    </body>
+</html>
