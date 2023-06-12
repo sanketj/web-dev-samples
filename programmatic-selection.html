@@ -1,0 +1,21 @@
+﻿<!DOCTYPE html>
+<html>
+    <body>
+        <div>This is a non-editable test.</div>
+        <div contenteditable="true">This is an editable test.</div>
+        <script>
+            window.setTimeout(() => {
+                let nonEditableDiv = document.querySelector("div");
+                nonEditableDiv.focus();
+                //let editableDiv = document.querySelectorAll("div")[1];
+                //editableDiv.focus();
+                let selection = window.getSelection();
+                selection.removeAllRanges();
+                let range = new Range();
+                //range.selectNodeContents(editableDiv);
+                range.selectNodeContents(nonEditableDiv);
+                selection.addRange(range);
+            }, 5000);
+        </script>
+    </body>
+</html>
