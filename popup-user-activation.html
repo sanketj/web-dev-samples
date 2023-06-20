@@ -6,15 +6,19 @@
   <br/>
   <input type="button" value="Async open" onclick="asyncOpen()"/>
   <br/>
+  <iframe target="sync-open-target"></iframe>
+  <br/>
+  <iframe target="async-open-target"></iframe>
+  <br/>
   <script>
     function syncOpen() {
-      window.open("https://sanketj.github.io/web-dev-samples/popup-user-activation-nested-page.html", "_blank", "popup");
+      window.open("http://www.bing.com", "sync-open-target", "popup");
     }
 
     function asyncOpen() {
       window.setTimeout(() => {
-        window.open("https://sanketj.github.io/web-dev-samples/popup-user-activation-nested-page.html", "_blank", "popup");
-      }, 10000);
+        window.open("http://www.bing.com", "async-open-target", "popup");
+      }, 6000);
     }
   </script>
 </body>
