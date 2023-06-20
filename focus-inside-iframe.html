@@ -1,0 +1,15 @@
+<html>
+<head>
+</head>
+<body>
+  <div contenteditable="true">abc</div>
+  <iframe src="focus-inside-iframe-nested-page.html" width="200px" height="200px"></iframe>
+  <script>
+    window.setTimeout(() => {
+      console.log(document.activeElement);
+      document.activeElement.blur();
+      console.log(document.activeElement);
+    }, 5000);
+  </script>
+</body>
+</html>
