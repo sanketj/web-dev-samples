@@ -1,0 +1,21 @@
+<html>
+<head>
+</head>
+<body>
+  <input type="button" value="Sync open" onclick="syncOpen()"/>
+  <br/>
+  <input type="button" value="Async open" onclick="asyncOpen()"/>
+  <br/>
+  <script>
+    function syncOpen() {
+      window.open("popup-user-activation-nested-page.html", "_blank", "popup");
+    }
+
+    function asyncOpen() {
+      window.setTimeout(() => {
+        window.open("popup-user-activation-nested-page.html", "_blank", "popup");
+      }, 6000);
+    }
+  </script>
+</body>
+</html>
