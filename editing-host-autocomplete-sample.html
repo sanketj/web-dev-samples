@@ -1,0 +1,146 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            div, textarea, input[type='text'] {
+                border: 2px solid black;
+                width: 100%;
+            }
+        </style>
+    </head>
+    <body>
+        <div contenteditable='true'></div>
+        <br/>
+        <div></div>
+        <br/>
+        <textarea></textarea>
+        <br/>
+        <input placeholder='Enter some text' name='name' />
+        <br/>
+        <form>
+            <input placeholder='Enter some text' name='name' />
+        </form>
+        <script>
+            let div1 = document.querySelector('div');
+            div1.addEventListener('compositionstart', (e) => {
+                document.body.append('div1 composition start fired', document.createElement('br'));
+                document.body.append('div1 composition start data ' + e.data, document.createElement('br'));
+            });
+            div1.addEventListener('compositionupdate', (e) => {
+                document.body.append('div1 composition update fired', document.createElement('br'));
+                document.body.append('div1 composition update data ' + e.data, document.createElement('br'));
+            });
+            div1.addEventListener('compositionend', (e) => {
+                document.body.append('div1 composition end fired', document.createElement('br'));
+                document.body.append('div1 composition end data ' + e.data, document.createElement('br'));
+            });
+            div1.addEventListener('beforeinput', (e) => {
+                document.body.append('div1 before input fired', document.createElement('br'));
+                document.body.append('div1 before input data ' + e.data, document.createElement('br'));
+            });
+            div1.addEventListener('input', (e) => {
+                document.body.append('div1 input fired', document.createElement('br'));
+                document.body.append('div1 input data ' + e.data, document.createElement('br'));
+            });
+
+            let div2 = document.querySelectorAll('div')[1];
+            div2.editContext = new EditContext();
+            div2.editContext.addEventListener('compositionstart', (e) => {
+                document.body.append('div2 composition start fired', document.createElement('br'));
+                document.body.append('div2 composition start data ' + e.data, document.createElement('br'));
+            });
+            div2.editContext.addEventListener('compositionupdate', (e) => {
+                document.body.append('div2 composition update fired', document.createElement('br'));
+                document.body.append('div2 composition update data ' + e.data, document.createElement('br'));
+            });
+            div2.editContext.addEventListener('compositionend', (e) => {
+                document.body.append('div2 composition end fired', document.createElement('br'));
+                document.body.append('div2 composition end data ' + e.data, document.createElement('br'));
+            });
+            div2.editContext.addEventListener('beforeinput', (e) => {
+                document.body.append('div2 before input fired', document.createElement('br'));
+                document.body.append('div2 before input data ' + e.data, document.createElement('br'));
+            });
+            div2.editContext.addEventListener('input', (e) => {
+                document.body.append('div2 input fired', document.createElement('br'));
+                document.body.append('div2 input data ' + e.data, document.createElement('br'));
+            });
+            div2.editContext.addEventListener('textupdate', (e) => {
+                document.body.append('div2 text update fired', document.createElement('br'));
+                document.body.append('div2 text update text ' + e.text, document.createElement('br'));
+            });
+            div2.editContext.addEventListener('textformatupdate', (e) => {
+                document.body.append('div2 text format update fired', document.createElement('br'));
+            });
+            div2.editContext.addEventListener('characterboundsupdate', (e) => {
+                document.body.append('div2 character bounds update fired', document.createElement('br'));
+            });
+
+            let textarea = document.querySelector('textarea');
+            textarea.addEventListener('compositionstart', (e) => {
+                document.body.append('textarea composition start fired', document.createElement('br'));
+                document.body.append('textarea composition start data ' + e.data, document.createElement('br'));
+            });
+            textarea.addEventListener('compositionupdate', (e) => {
+                document.body.append('textarea composition update fired', document.createElement('br'));
+                document.body.append('textarea composition update data ' + e.data, document.createElement('br'));
+            });
+            textarea.addEventListener('compositionend', (e) => {
+                document.body.append('textarea composition end fired', document.createElement('br'));
+                document.body.append('textarea composition end data ' + e.data, document.createElement('br'));
+            });
+            textarea.addEventListener('beforeinput', (e) => {
+                document.body.append('textarea before input fired', document.createElement('br'));
+                document.body.append('textarea before input data ' + e.data, document.createElement('br'));
+            });
+            textarea.addEventListener('input', (e) => {
+                document.body.append('textarea input fired', document.createElement('br'));
+                document.body.append('textarea input data ' + e.data, document.createElement('br'));
+            });
+
+            let input1 = document.querySelector('input');
+            input1.addEventListener('compositionstart', (e) => {
+                document.body.append('input1 composition start fired', document.createElement('br'));
+                document.body.append('input1 composition start data ' + e.data, document.createElement('br'));
+            });
+            input1.addEventListener('compositionupdate', (e) => {
+                document.body.append('input1 composition update fired', document.createElement('br'));
+                document.body.append('input1 composition update data ' + e.data, document.createElement('br'));
+            });
+            input1.addEventListener('compositionend', (e) => {
+                document.body.append('input1 composition end fired', document.createElement('br'));
+                document.body.append('input1 composition end data ' + e.data, document.createElement('br'));
+            });
+            input1.addEventListener('beforeinput', (e) => {
+                document.body.append('input1 before input fired', document.createElement('br'));
+                document.body.append('input1 before input data ' + e.data, document.createElement('br'));
+            });
+            input1.addEventListener('input', (e) => {
+                document.body.append('input1 input fired', document.createElement('br'));
+                document.body.append('input1 input data ' + e.data, document.createElement('br'));
+            });
+
+            let input2 = document.querySelectorAll('input')[1];
+            input2.addEventListener('compositionstart', (e) => {
+                document.body.append('input2 composition start fired', document.createElement('br'));
+                document.body.append('input2 composition start data ' + e.data, document.createElement('br'));
+            });
+            input2.addEventListener('compositionupdate', (e) => {
+                document.body.append('input2 composition update fired', document.createElement('br'));
+                document.body.append('input2 composition update data ' + e.data, document.createElement('br'));
+            });
+            input2.addEventListener('compositionend', (e) => {
+                document.body.append('input2 composition end fired', document.createElement('br'));
+                document.body.append('input2 composition end data ' + e.data, document.createElement('br'));
+            });
+            input2.addEventListener('beforeinput', (e) => {
+                document.body.append('input2 before input fired', document.createElement('br'));
+                document.body.append('input2 before input data ' + e.data, document.createElement('br'));
+            });
+            input2.addEventListener('input', (e) => {
+                document.body.append('input2 input fired', document.createElement('br'));
+                document.body.append('input2 input data ' + e.data, document.createElement('br'));
+            });
+        </script>
+    </body>
+</html>
