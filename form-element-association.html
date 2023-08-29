@@ -1,0 +1,77 @@
+<html>
+<head>
+  <style>
+    div, my-editable, my-associated-editable {
+      border: 2px solid black;
+    }
+  </style>
+</head>
+<body>
+  <form>
+    <input type='text' />
+    <br />
+    <textarea></textarea>
+    <br />
+    <div contenteditable='true'></div>
+    <br />
+    <input type='checkbox' />
+    <br />
+    <my-checkbox></my-checkbox>
+    <br />
+    <my-associated-checkbox></my-associated-checkbox>
+    <br />
+    <my-editable></my-editable>
+    <br />
+    <my-associated-editable></my-associated-editable>
+    <br />
+    <input type='submit' value='Click' />
+    <br />
+  </form>
+  <script>
+    let form = document.querySelector('form');
+    let input1 = document.querySelector('input');
+    let textarea1 = document.querySelector('textarea');
+    let div1 = document.querySelector('div');
+    let input2 = document.querySelectorAll('input')[1];
+    let checkbox1 = document.querySelector('my-checkbox');
+    let associatedCheckbox1 = document.querySelector('my-associated-checkbox')
+    let editable1 = document.querySelector('my-editable');
+    let associatedEditable1 = document.querySelector('my-associated-editable');
+    let input3 = document.querySelectorAll('input')[2];
+
+    class Checkbox extends HTMLElement {
+      constructor() {
+        super();
+
+        this.attachShadow({ mode: 'open' });
+        let input = document.createElement('input');
+        input.setAttribute('type', 'checkbox');
+        this.shadowRoot.append(input);
+      }
+    }
+    window.customElements.define('my-checkbox', Checkbox);
+
+    class AssociatedCheckbox extends Checkbox {
+      static formAssociated = true;
+    }
+    window.customElements.define('my-associated-checkbox', AssociatedCheckbox);
+
+    class Editable extends HTMLElement {
+      constructor() {
+        super();
+
+        this.attachShadow({ mode: 'open' });
+        let div = document.createElement('div');
+        div.setAttribute('contenteditable', 'true');
+        this.shadowRoot.append(div);
+      }
+    }
+    window.customElements.define('my-editable', Editable);
+
+    class AssociatedEditable extends Editable {
+      static formAssociated = true;
+    }
+    window.customElements.define('my-associated-editable', AssociatedEditable);
+  </script>
+</body>
+</html>
