@@ -61,7 +61,15 @@
                 document.body.append('div2 before input fired', document.createElement('br'));
                 document.body.append('div2 before input data ' + e.data, document.createElement('br'));
 
-                //div2.append(e.data);
+                if (e.inputType === "insertReplacementText") {
+                    // for spellcheck, autocomplete, etc.
+                    let newText = e.dataTransfer.getData("text");
+                    let range = e.getTargetRanges()[0];
+                    div2.firstChild.replaceData(range.startOffset, range.endOffset, newText);
+                    let selection = window.getSelection();
+                    selection.removeAllRanges();
+                    selection.setBaseAndExtent(div2.firstChild, range.startOffset + newText.length, div2.firstChild, range.startOffset + newText.length);
+                }
             });
             div2.addEventListener('input', (e) => {
                 document.body.append('div2 input fired', document.createElement('br'));
