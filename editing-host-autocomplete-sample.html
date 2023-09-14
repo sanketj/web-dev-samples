@@ -71,14 +71,14 @@
                 document.body.append('div2 before input fired', document.createElement('br'));
                 document.body.append('div2 before input data ' + e.data, document.createElement('br'));
 
-                if (e.inputType === "insertReplacementText") {
+                if (e.inputType === 'insertReplacementText') {
                     // for spellcheck, autocomplete, etc.
-                    let newText = e.dataTransfer.getData("text");
+                    let text = e.dataTransfer.getData('text');
                     let range = e.getTargetRanges()[0];
-                    div2.firstChild.replaceData(range.startOffset, range.endOffset, newText);
+                    div2.firstChild.replaceData(range.startOffset, range.endOffset, text);
                     let selection = window.getSelection();
                     selection.removeAllRanges();
-                    selection.setBaseAndExtent(div2.firstChild, range.startOffset + newText.length, div2.firstChild, range.startOffset + newText.length);
+                    selection.setBaseAndExtent(div2.firstChild, range.startOffset + text.length, div2.firstChild, range.startOffset + text.length);
                 }
             });
             div2.addEventListener('input', (e) => {
