@@ -1,0 +1,65 @@
+﻿<!DOCTYPE HTML>
+<html>
+  <head>
+    <style>
+      div {
+        border: 2px solid black;
+        width: 100%;
+      }
+    </style>
+  </head> 
+  <body>
+    <input type="button" value="clearDropZone" onclick="document.getElementById('drop-zone').innerHTML = '<br/>'"/>
+    <div id="drop-zone" ondragenter="dragEnterHandler()" ondragover="dragOverHandler()" ondragleave="dragLeaveHandler()" ondrop="dropHandler()"><br/></div>
+    <br/>
+    <div draggable="true" title="Draggable div" ondragstart="draggableDivDragStartHandler()" ondrag="draggableDivDragHandler()" ondragend="draggableDivEndHandler()">Draggable div</div>
+    <br/>
+    <div draggable="false">Non-draggable div</div>
+    <br/>
+    <b>Logs:</b>
+    <div id="logs"></div>
+    <script>
+      function dropHandler(e) {
+        let logs = document.getElementById('logs');
+        logs.innerHTML += 'drop fired<br/>';
+
+        let data = e.dataTransfer.getData('text/plain');
+        let dropZone = document.getElementById('drop-zone');
+        div.innerText = data;
+      }
+
+      function dragEnterHandler(e) {
+        let logs = document.getElementById('logs');
+        logs.innerHTML += 'dragEnter fired<br/>';
+      }
+
+      function dragOverHandler(e) {
+        let logs = document.getElementById('logs');
+        logs.innerHTML += 'dragOver fired<br/>';
+      }
+
+      function dragLeaveHandler(e) {
+        let logs = document.getElementById('logs');
+        logs.innerHTML += 'dragLeave fired<br/>';
+      }
+
+      function draggableDivDragStartHandler(e) {
+        let logs = document.getElementById('logs');
+        logs.innerHTML += 'draggableDivDragStart fired<br/>';
+
+        e.dataTransfer.setData('text/plain', div.innerText);
+        e.dataTransfer.dropEffect = 'copy';
+      }
+
+      function draggableDivDragHandler(e) {
+        let logs = document.getElementById('logs');
+        logs.innerHTML += 'draggableDivDrag fired<br/>';
+      }
+
+      function draggableDivEndHandler(e) {
+        let logs = document.getElementById('logs');
+        logs.innerHTML += 'draggableDivEnd fired<br/>';
+      }
+    </script>
+  </body>
+</html>
