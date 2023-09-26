@@ -6,6 +6,9 @@
         border: 2px solid black;
         width: 100%;
       }
+      #draggable-div-with-pointer-events-none {
+        pointer-events: none;
+      }
     </style>
   </head> 
   <body>
@@ -16,6 +19,10 @@
     <br/>
     <div draggable="false">Non-draggable div</div>
     <br/>
+    <div title="Default draggable div" id="default-draggable-div">Default draggable div</div>
+    <br/>
+    <div draggable="true" title="Draggable div with pointer-events:none" id="draggable-div-with-pointer-events-none">Draggable div with pointer-events: none</div>
+    <br/>
     <b>Logs:</b>
     <div id="logs"></div>
     <script>
@@ -23,8 +30,6 @@
       button.addEventListener('click', () => {
         dropZone.innerHTML = '<br/>';
       });
-
-      let nonDraggableDiv = document.querySelector('div[draggable="false"]');
 
       let dropZone = document.getElementById('drop-zone');
       dropZone.addEventListener('dragenter', (e) => {
@@ -47,6 +52,8 @@
         let logs = document.getElementById('logs');
         logs.innerHTML += 'drop fired<br/>';
 
+        e.preventDefault();
+
         let data = e.dataTransfer.getData('text/plain');
         let dropZone = document.getElementById('drop-zone');
         dropZone.innerText = data;
@@ -58,7 +65,6 @@
         logs.innerHTML += 'draggableDivDragStart fired<br/>';
 
         e.dataTransfer.setData('text/plain', draggableDiv.innerText);
-        e.dataTransfer.effectAllowed = 'copy';
       });
       draggableDiv.addEventListener('drag', (e) => {
         let logs = document.getElementById('logs');
@@ -67,6 +73,48 @@
       draggableDiv.addEventListener('dragend', (e) => {
         let logs = document.getElementById('logs');
         logs.innerHTML += 'draggableDivDragEnd fired<br/>';
+      });
+
+      let nonDraggableDiv = document.querySelector('div[draggable="false"]');
+      nonDraggableDiv.addEventListener('dragstart', (e) => {
+        let logs = document.getElementById('logs');
+        logs.innerHTML += 'nonDraggableDivDragStart fired<br/>';
+      });
+      nonDraggableDiv.addEventListener('drag', (e) => {
+        let logs = document.getElementById('logs');
+        logs.innerHTML += 'nonDraggableDivDrag fired<br/>';
+      });
+      nonDraggableDiv.addEventListener('dragend', (e) => {
+        let logs = document.getElementById('logs');
+        logs.innerHTML += 'nonDraggableDivDragEnd fired<br/>';
+      });
+
+      let defaultDraggableDiv = document.getElementById('default-draggable-div');
+      defaultDraggableDiv.addEventListener('dragstart', (e) => {
+        let logs = document.getElementById('logs');
+        logs.innerHTML += 'defaultDraggableDivDragStart fired<br/>';
+      });
+      defaultDraggableDiv.addEventListener('drag', (e) => {
+        let logs = document.getElementById('logs');
+        logs.innerHTML += 'defaultDraggableDivDrag fired<br/>';
+      });
+      defaultDraggableDiv.addEventListener('dragend', (e) => {
+        let logs = document.getElementById('logs');
+        logs.innerHTML += 'defaultDraggableDivDragEnd fired<br/>';
+      });
+
+      let draggableDivWithPointerEventsNone = document.getElementById('draggable-div-with-pointer-events-none');
+      draggableDivWithPointerEventsNone.addEventListener('dragstart', (e) => {
+        let logs = document.getElementById('logs');
+        logs.innerHTML += 'draggableDivWithPointerEventsNoneDragStart fired<br/>';
+      });
+      draggableDivWithPointerEventsNone.addEventListener('drag', (e) => {
+        let logs = document.getElementById('logs');
+        logs.innerHTML += 'draggableDivWithPointerEventsNoneDrag fired<br/>';
+      });
+      draggableDivWithPointerEventsNone.addEventListener('dragend', (e) => {
+        let logs = document.getElementById('logs');
+        logs.innerHTML += 'draggableDivWithPointerEventsNoneDragEnd fired<br/>';
       });
     </script>
   </body>
