@@ -9,57 +9,65 @@
     </style>
   </head> 
   <body>
-    <input type="button" value="clearDropZone" onclick="document.getElementById('drop-zone').innerHTML = '<br/>'"/>
-    <div id="drop-zone" ondragenter="dragEnterHandler()" ondragover="dragOverHandler()" ondragleave="dragLeaveHandler()" ondrop="dropHandler()"><br/></div>
+    <input type="button" value="clearDropZone" />
+    <div id="drop-zone"><br/></div>
     <br/>
-    <div draggable="true" title="Draggable div" ondragstart="draggableDivDragStartHandler()" ondrag="draggableDivDragHandler()" ondragend="draggableDivEndHandler()">Draggable div</div>
+    <div draggable="true" title="Draggable div">Draggable div</div>
     <br/>
     <div draggable="false">Non-draggable div</div>
     <br/>
     <b>Logs:</b>
     <div id="logs"></div>
     <script>
-      function dropHandler(e) {
+      let button = document.querySelector('input[type="button"]');
+      button.addEventListener('click', () => {
+        dropZone.innerHTML = '<br/>';
+      });
+
+      let nonDraggableDiv = document.querySelector('div[draggable="false"]');
+
+      let dropZone = document.getElementById('drop-zone');
+      dropZone.addEventListener('dragenter', (e) => {
+        let logs = document.getElementById('logs');
+        logs.innerHTML += 'dragEnter fired<br/>';
+
+        e.preventDefault();
+      });
+      dropZone.addEventListener('dragover', (e) => {
+        let logs = document.getElementById('logs');
+        logs.innerHTML += 'dragOver fired<br/>';
+
+        e.preventDefault();
+      });
+      dropZone.addEventListener('dragleave', (e) => {
+        let logs = document.getElementById('logs');
+        logs.innerHTML += 'dragLeave fired<br/>';
+      });
+      dropZone.addEventListener('drop', (e) => {
         let logs = document.getElementById('logs');
         logs.innerHTML += 'drop fired<br/>';
 
         let data = e.dataTransfer.getData('text/plain');
         let dropZone = document.getElementById('drop-zone');
-        div.innerText = data;
-      }
+        dropZone.innerText = data;
+      });
 
-      function dragEnterHandler(e) {
-        let logs = document.getElementById('logs');
-        logs.innerHTML += 'dragEnter fired<br/>';
-      }
-
-      function dragOverHandler(e) {
-        let logs = document.getElementById('logs');
-        logs.innerHTML += 'dragOver fired<br/>';
-      }
-
-      function dragLeaveHandler(e) {
-        let logs = document.getElementById('logs');
-        logs.innerHTML += 'dragLeave fired<br/>';
-      }
-
-      function draggableDivDragStartHandler(e) {
+      let draggableDiv = document.querySelector('div[draggable="true"]');
+      draggableDiv.addEventListener('dragstart', (e) => {
         let logs = document.getElementById('logs');
         logs.innerHTML += 'draggableDivDragStart fired<br/>';
 
-        e.dataTransfer.setData('text/plain', div.innerText);
-        e.dataTransfer.dropEffect = 'copy';
-      }
-
-      function draggableDivDragHandler(e) {
+        e.dataTransfer.setData('text/plain', draggableDiv.innerText);
+        e.dataTransfer.effectAllowed = 'copy';
+      });
+      draggableDiv.addEventListener('drag', (e) => {
         let logs = document.getElementById('logs');
         logs.innerHTML += 'draggableDivDrag fired<br/>';
-      }
-
-      function draggableDivEndHandler(e) {
+      });
+      draggableDiv.addEventListener('dragend', (e) => {
         let logs = document.getElementById('logs');
-        logs.innerHTML += 'draggableDivEnd fired<br/>';
-      }
+        logs.innerHTML += 'draggableDivDragEnd fired<br/>';
+      });
     </script>
   </body>
 </html>
