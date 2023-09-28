@@ -9,11 +9,22 @@
       #draggable-div-with-pointer-events-none {
         pointer-events: none;
       }
+      .drop-container {
+        border: unset;
+        display: flex;
+      }
     </style>
   </head> 
   <body>
     <input type="button" value="clearDropZone" />
-    <div id="drop-zone"><br/></div>
+    <br/>
+    <div class="drop-container">
+      <p>Drop Zone:</p>
+      <div id="drop-zone"><br/></div>
+      <br/>
+      <p>Not-Drop Zone:</p>
+      <div id="not-drop-zone"><br/></div>
+    </div>
     <br/>
     <div draggable="true" title="Draggable div">Draggable div</div>
     <br/>
@@ -34,19 +45,19 @@
       let dropZone = document.getElementById('drop-zone');
       dropZone.addEventListener('dragenter', (e) => {
         let logs = document.getElementById('logs');
-        logs.innerHTML += 'dragEnter fired<br/>';
+        logs.innerHTML += 'dropZoneDragEnter fired<br/>';
 
         e.preventDefault();
       });
       dropZone.addEventListener('dragover', (e) => {
         let logs = document.getElementById('logs');
-        logs.innerHTML += 'dragOver fired<br/>';
+        logs.innerHTML += 'dropZoneDragOver fired<br/>';
 
         e.preventDefault();
       });
       dropZone.addEventListener('dragleave', (e) => {
         let logs = document.getElementById('logs');
-        logs.innerHTML += 'dragLeave fired<br/>';
+        logs.innerHTML += 'dropZoneDragLeave fired<br/>';
       });
       dropZone.addEventListener('drop', (e) => {
         let logs = document.getElementById('logs');
@@ -54,9 +65,29 @@
 
         e.preventDefault();
 
-        let data = e.dataTransfer.getData('text/plain');
-        let dropZone = document.getElementById('drop-zone');
-        dropZone.innerText = data;
+        let dataTransfer = e.dataTransfer;
+        let dataTransferTypes = dataTransfer.types;
+        for (let i = 0; i < dataTransferTypes.length; i++) {
+          let type = dataTransferTypes[i];
+          let data = dataTransfer.getData(type);
+          dropZone.innerHTML += `dataTransferType: ${type}, data: "${data}"<br/>`;
+        }
+      });
+
+      let notDropZone = document.getElementById('not-drop-zone');
+      notDropZone.addEventListener('dragenter', (e) => {
+        let logs = document.getElementById('logs');
+        logs.innerHTML += 'notDropZoneDragEnter fired<br/>';
+      });
+      notDropZone.addEventListener('dragover', (e) => {
+        let logs = document.getElementById('logs');
+        logs.innerHTML += 'notDropZoneDragOver fired<br/>';
+
+        e.preventDefault();
+      });
+      notDropZone.addEventListener('dragleave', (e) => {
+        let logs = document.getElementById('logs');
+        logs.innerHTML += 'notDropZoneDragLeave fired<br/>';
       });
 
       let draggableDiv = document.querySelector('div[draggable="true"]');
