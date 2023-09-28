@@ -11,18 +11,21 @@
       }
       .drop-container {
         border: unset;
-        display: flex;
+        display: grid;
+        grid-auto-flow: column;
+        grid-template-rows: 1fr 4fr;
+        column-gap: 10px;
       }
     </style>
   </head> 
   <body>
     <input type="button" value="clearDropZone" />
     <br/>
+    <br/>
     <div class="drop-container">
-      <p>Drop Zone:</p>
+      Drop Zone:
       <div id="drop-zone"><br/></div>
-      <br/>
-      <p>Not-Drop Zone:</p>
+      Not-Drop Zone:
       <div id="not-drop-zone"><br/></div>
     </div>
     <br/>
