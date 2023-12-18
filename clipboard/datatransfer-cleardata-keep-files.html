@@ -1,0 +1,35 @@
+﻿<!DOCTYPE HTML>
+<html>
+  <head>
+    <style>
+    </style>
+  </head> 
+  <body>
+    <script>
+        // 1. create a data transfer
+        const dataTransfer = new DataTransfer();
+
+        // 2. add items to the data transfer
+        const filename = "1.png";
+        const file = new File(["🕺💃"], filename, {
+            type: "image/png"
+        });
+
+        const filename2 = "2.png";
+        const file2 = new File(["🕺💃"], filename2, {
+            type: "image/png"
+        });
+
+        dataTransfer.items.add(file);
+        dataTransfer.items.add(file2);
+
+        dataTransfer.items.add("hi", "text/plain");
+        dataTransfer.items.add("new octet item", "application/octet-stream");
+
+        // 3. clear the data in the data transfer
+        dataTransfer.clearData();
+
+        console.log(dataTransfer.items.length);
+    </script>
+  </body>
+</html>

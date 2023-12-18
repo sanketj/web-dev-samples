@@ -1,0 +1,49 @@
+﻿<!DOCTYPE HTML>
+<html>
+  <head>
+    <style>
+      #draggable-div,
+      #drop-zone {
+        border: 2px solid black;
+      }
+      #drop-zone {
+        height: 100px;
+      }
+    </style>
+  </head> 
+  <body>
+    <div id="draggable-div" draggable="true">Draggable div</div>
+    <br/>
+    Drop Zone:
+    <div id="drop-zone"></div>
+    <script>
+      let draggableDiv = document.getElementById('draggable-div');
+      draggableDiv.addEventListener('dragstart', (event) => {
+        console.log('draggableDiv dragstart');
+        event.dataTransfer.setData('text/plain', 'This text may be dragged');
+
+        const filename1 = "1.png";
+        const file1 = new File(["🕺💃"], filename1, {
+            type: "image/png"
+        });
+        event.dataTransfer.items.add(file1);
+        console.log('DataTransfer items length: ' + event.dataTransfer.items.length);
+        console.log('DataTransfer files length: ' + event.dataTransfer.files.length);
+        console.log('DataTransfer types length: ' + event.dataTransfer.types.length);
+      });
+
+      let dropZone = document.getElementById('drop-zone');
+      dropZone.addEventListener('dragover', (event) => {
+        event.preventDefault();
+        console.log('dropZone dragover');
+      });
+      dropZone.addEventListener('drop', (event) => {
+        event.preventDefault();
+        console.log('dropZone drop');
+        console.log('DataTransfer items length: ' + event.dataTransfer.items.length);
+        console.log('DataTransfer files length: ' + event.dataTransfer.files.length);
+        console.log('DataTransfer types length: ' + event.dataTransfer.types.length);
+      });
+    </script>
+  </body>
+</html>
