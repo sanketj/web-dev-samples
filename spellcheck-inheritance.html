@@ -4,7 +4,24 @@
         <div contenteditable="true" style="border:2px black solid"></div>
         <br/>
         <div contenteditable="true" style="border:2px black solid" spellcheck="true"></div>
+        <br/>
+        <div contenteditable="true" id="div-with-shadow"></div>
+        <br/>
+        <div contenteditable="true" spellcheck="true" id="div-with-spellcheck-and-shadow"></div>
         <script>
+            let divWithShadow = document.getElementById("div-with-shadow");
+            let shadow = divWithShadow.attachShadow({mode: "open"});
+            let div = document.createElement("div");
+            div.setAttribute("contenteditable", "true");
+            div.setAttribute("style", "border:2px black solid");
+            shadow.appendChild(div);
+
+            let divWithSpellcheckAndShadow = document.getElementById("div-with-spellcheck-and-shadow");
+            let shadow2 = divWithSpellcheckAndShadow.attachShadow({mode: "open"});
+            let div2 = document.createElement("div");
+            div2.setAttribute("contenteditable", "true");
+            div2.setAttribute("style", "border:2px black solid");
+            shadow2.appendChild(div2);
         </script>
     </body>
 </html>
