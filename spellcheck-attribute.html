@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+    </style>
+  </head>
+  <body>
+    <div></div>
+    <div spellcheck></div>
+    <div spellcheck="true"></div>
+    <div spellcheck=""></div>
+    <div spellcheck="false"></div>
+    <div spellcheck="abc"></div>
+    <div contenteditable="true"></div>
+    <div spellcheck contenteditable="true"></div>
+    <div spellcheck="true" contenteditable="true"></div>
+    <div spellcheck="" contenteditable="true"></div>
+    <div spellcheck="false" contenteditable="true"></div>
+    <div spellcheck="abc" contenteditable="true"></div>
+    <span spellcheck="false">
+      <div></div>
+      <div contenteditable="true"></div>
+    </span>
+    <span spellcheck="true">
+      <div spellcheck="false"></div>
+      <div contenteditable="true" spellcheck="false"></div>
+    </span>
+    <script>
+      let div = document.querySelector('div');
+      let divWithSpellcheck = document.querySelector('div[spellcheck]');
+      let divWithSpellcheckTrue = document.querySelector('div[spellcheck="true"]');
+      let divWithSpellcheckEmpty = document.querySelector('div[spellcheck=""]');
+      let divWithSpellcheckFalse = document.querySelector('div[spellcheck="false"]');
+      let divWithSpellcheckInvalid = document.querySelector('div[spellcheck="abc"]');
+      let divInsideSpanWithSpellcheckFalse = document.querySelector('span[spellcheck="false"] div');
+      let divWithSpellcheckFalseInsideSpanWithSpellcheckTrue = document.querySelector('span[spellcheck="true"] div[spellcheck="false"]');
+      let editableDiv = document.querySelector('div[contenteditable="true"]');
+      let editableDivWithSpellcheck = document.querySelector('div[spellcheck][contenteditable="true"]');
+      let editableDivWithSpellcheckTrue = document.querySelector('div[spellcheck="true"][contenteditable="true"]');
+      let editableDivWithSpellcheckEmpty = document.querySelector('div[spellcheck=""][contenteditable="true"]');
+      let editableDivWithSpellcheckFalse = document.querySelector('div[spellcheck="false"][contenteditable="true"]');
+      let editableDivWithSpellcheckInvalid = document.querySelector('div[spellcheck="abc"][contenteditable="true"]');
+      let editableDivInsideSpanWithSpellcheckFalse = document.querySelector('span[spellcheck="false"] div[contenteditable="true"]');
+      let editableDivWithSpellcheckFalseInsideSpanWithSpellcheckTrue = document.querySelector('span[spellcheck="true"] div[spellcheck="false"][contenteditable="true"]');
+      console.log('div.spellcheck', div.spellcheck);
+      console.log('divWithSpellcheck.spellcheck', divWithSpellcheck.spellcheck);
+      console.log('divWithSpellcheckTrue.spellcheck', divWithSpellcheckTrue.spellcheck);
+      console.log('divWithSpellcheckEmpty.spellcheck', divWithSpellcheckEmpty.spellcheck);
+      console.log('divWithSpellcheckFalse.spellcheck', divWithSpellcheckFalse.spellcheck);
+      console.log('divWithSpellcheckInvalid.spellcheck', divWithSpellcheckInvalid.spellcheck);
+      console.log('divInsideSpanWithSpellcheckFalse.spellcheck', divInsideSpanWithSpellcheckFalse.spellcheck);
+      console.log('divWithSpellcheckFalseInsideSpanWithSpellcheckTrue.spellcheck', divWithSpellcheckFalseInsideSpanWithSpellcheckTrue.spellcheck);
+      console.log('editableDiv.spellcheck', editableDiv.spellcheck);
+      console.log('editableDivWithSpellcheck.spellcheck', editableDivWithSpellcheck.spellcheck);
+      console.log('editableDivWithSpellcheckTrue.spellcheck', editableDivWithSpellcheckTrue.spellcheck);
+      console.log('editableDivWithSpellcheckEmpty.spellcheck', editableDivWithSpellcheckEmpty.spellcheck);
+      console.log('editableDivWithSpellcheckFalse.spellcheck', editableDivWithSpellcheckFalse.spellcheck);
+      console.log('editableDivWithSpellcheckInvalid.spellcheck', editableDivWithSpellcheckInvalid.spellcheck);
+      console.log('editableDivInsideSpanWithSpellcheckFalse.spellcheck', editableDivInsideSpanWithSpellcheckFalse.spellcheck);
+      console.log('editableDivWithSpellcheckFalseInsideSpanWithSpellcheckTrue.spellcheck', editableDivWithSpellcheckFalseInsideSpanWithSpellcheckTrue.spellcheck);
+      console.log('div.getAttribute("spellcheck")', div.getAttribute('spellcheck'));
+      console.log('divWithSpellcheck.getAttribute("spellcheck")', divWithSpellcheck.getAttribute('spellcheck'));
+      console.log('divWithSpellcheckTrue.getAttribute("spellcheck")', divWithSpellcheckTrue.getAttribute('spellcheck'));
+      console.log('divWithSpellcheckEmpty.getAttribute("spellcheck")', divWithSpellcheckEmpty.getAttribute('spellcheck'));
+      console.log('divWithSpellcheckFalse.getAttribute("spellcheck")', divWithSpellcheckFalse.getAttribute('spellcheck'));
+      console.log('divWithSpellcheckInvalid.getAttribute("spellcheck")', divWithSpellcheckInvalid.getAttribute('spellcheck'));
+      console.log('divInsideSpanWithSpellcheckFalse.getAttribute("spellcheck")', divInsideSpanWithSpellcheckFalse.getAttribute('spellcheck'));
+      console.log('divWithSpellcheckFalseInsideSpanWithSpellcheckTrue.getAttribute("spellcheck")', divWithSpellcheckFalseInsideSpanWithSpellcheckTrue.getAttribute('spellcheck'));
+      console.log('editableDiv.getAttribute("spellcheck")', editableDiv.getAttribute('spellcheck'));
+      console.log('editableDivWithSpellcheck.getAttribute("spellcheck")', editableDivWithSpellcheck.getAttribute('spellcheck'));
+      console.log('editableDivWithSpellcheckTrue.getAttribute("spellcheck")', editableDivWithSpellcheckTrue.getAttribute('spellcheck'));
+      console.log('editableDivWithSpellcheckEmpty.getAttribute("spellcheck")', editableDivWithSpellcheckEmpty.getAttribute('spellcheck'));
+      console.log('editableDivWithSpellcheckFalse.getAttribute("spellcheck")', editableDivWithSpellcheckFalse.getAttribute('spellcheck'));
+      console.log('editableDivWithSpellcheckInvalid.getAttribute("spellcheck")', editableDivWithSpellcheckInvalid.getAttribute('spellcheck'));
+      console.log('editableDivInsideSpanWithSpellcheckFalse.getAttribute("spellcheck")', editableDivInsideSpanWithSpellcheckFalse.getAttribute('spellcheck'));
+      console.log('editableDivWithSpellcheckFalseInsideSpanWithSpellcheckTrue.getAttribute("spellcheck")', editableDivWithSpellcheckFalseInsideSpanWithSpellcheckTrue.getAttribute('spellcheck'));
+
+      customElements.define('test-custom-element', class extends HTMLElement {});
+      let customElement = document.createElement('test-custom-element');
+      let customElementWithSpellcheckTrue = document.createElement('test-custom-element');
+      customElementWithSpellcheckTrue.setAttribute('spellcheck', 'true');
+      let customElementWithSpellcheckEmpty = document.createElement('test-custom-element');
+      customElementWithSpellcheckEmpty.setAttribute('spellcheck', '');
+      let customElementWithSpellcheckFalse = document.createElement('test-custom-element');
+      customElementWithSpellcheckFalse.setAttribute('spellcheck', 'false');
+      let customElementWithSpellcheckInvalid = document.createElement('test-custom-element');
+      customElementWithSpellcheckInvalid.setAttribute('spellcheck', 'abc');
+      let editableCustomElement = document.createElement('test-custom-element');
+      editableCustomElement.setAttribute('contenteditable', 'true');
+      let editableCustomElementWithSpellcheckTrue = document.createElement('test-custom-element');
+      editableCustomElementWithSpellcheckTrue.setAttribute('spellcheck', 'true');
+      editableCustomElementWithSpellcheckTrue.setAttribute('contenteditable', 'true');
+      let editableCustomElementWithSpellcheckEmpty = document.createElement('test-custom-element');
+      editableCustomElementWithSpellcheckEmpty.setAttribute('spellcheck', '');
+      editableCustomElementWithSpellcheckEmpty.setAttribute('contenteditable', 'true');
+      let editableCustomElementWithSpellcheckFalse = document.createElement('test-custom-element');
+      editableCustomElementWithSpellcheckFalse.setAttribute('spellcheck', 'false');
+      editableCustomElementWithSpellcheckFalse.setAttribute('contenteditable', 'true');
+      let editableCustomElementWithSpellcheckInvalid = document.createElement('test-custom-element');
+      editableCustomElementWithSpellcheckInvalid.setAttribute('spellcheck', 'abc');
+      editableCustomElementWithSpellcheckInvalid.setAttribute('contenteditable', 'true');
+      document.body.appendChild(customElement);
+      document.body.appendChild(customElementWithSpellcheckTrue);
+      document.body.appendChild(customElementWithSpellcheckEmpty);
+      document.body.appendChild(customElementWithSpellcheckFalse);
+      document.body.appendChild(customElementWithSpellcheckInvalid);
+      document.body.appendChild(editableCustomElement);
+      document.body.appendChild(editableCustomElementWithSpellcheckTrue);
+      document.body.appendChild(editableCustomElementWithSpellcheckEmpty);
+      document.body.appendChild(editableCustomElementWithSpellcheckFalse);
+      document.body.appendChild(editableCustomElementWithSpellcheckInvalid);
+      console.log('customElement.spellcheck', customElement.spellcheck);
+      console.log('customElementWithSpellcheckTrue.spellcheck', customElementWithSpellcheckTrue.spellcheck);
+      console.log('customElementWithSpellcheckEmpty.spellcheck', customElementWithSpellcheckEmpty.spellcheck);
+      console.log('customElementWithSpellcheckFalse.spellcheck', customElementWithSpellcheckFalse.spellcheck);
+      console.log('customElementWithSpellcheckInvalid.spellcheck', customElementWithSpellcheckInvalid.spellcheck);
+      console.log('editableCustomElement.spellcheck', editableCustomElement.spellcheck);
+      console.log('editableCustomElementWithSpellcheckTrue.spellcheck', editableCustomElementWithSpellcheckTrue.spellcheck);
+      console.log('editableCustomElementWithSpellcheckEmpty.spellcheck', editableCustomElementWithSpellcheckEmpty.spellcheck);
+      console.log('editableCustomElementWithSpellcheckFalse.spellcheck', editableCustomElementWithSpellcheckFalse.spellcheck);
+      console.log('editableCustomElementWithSpellcheckInvalid.spellcheck', editableCustomElementWithSpellcheckInvalid.spellcheck);
+      console.log('customElement.getAttribute("spellcheck")', customElement.getAttribute('spellcheck'));
+      console.log('customElementWithSpellcheckTrue.getAttribute("spellcheck")', customElementWithSpellcheckTrue.getAttribute('spellcheck'));
+      console.log('customElementWithSpellcheckEmpty.getAttribute("spellcheck")', customElementWithSpellcheckEmpty.getAttribute('spellcheck'));
+      console.log('customElementWithSpellcheckFalse.getAttribute("spellcheck")', customElementWithSpellcheckFalse.getAttribute('spellcheck'));
+      console.log('customElementWithSpellcheckInvalid.getAttribute("spellcheck")', customElementWithSpellcheckInvalid.getAttribute('spellcheck'));
+      console.log('editableCustomElement.getAttribute("spellcheck")', editableCustomElement.getAttribute('spellcheck'));
+      console.log('editableCustomElementWithSpellcheckTrue.getAttribute("spellcheck")', editableCustomElementWithSpellcheckTrue.getAttribute('spellcheck'));
+      console.log('editableCustomElementWithSpellcheckEmpty.getAttribute("spellcheck")', editableCustomElementWithSpellcheckEmpty.getAttribute('spellcheck'));
+      console.log('editableCustomElementWithSpellcheckFalse.getAttribute("spellcheck")', editableCustomElementWithSpellcheckFalse.getAttribute('spellcheck'));
+      console.log('editableCustomElementWithSpellcheckInvalid.getAttribute("spellcheck")', editableCustomElementWithSpellcheckInvalid.getAttribute('spellcheck'));
+
+      const elements = [ new DOMParser().parseFromString('<html><body spellcheck="false"><input /></body></html>', 'text/html').body.firstElementChild,
+                     new DOMParser().parseFromString('<html><body spellcheck="false"><textarea></textarea></body></html>', 'text/html').body.firstElementChild,
+                     new DOMParser().parseFromString('<html><body spellcheck="false"><div></div></body></html>', 'text/html').body.firstElementChild,
+                     new DOMParser().parseFromString('<html><body spellcheck="false"><span></span></body></html>', 'text/html').body.firstElementChild ];
+      elements.forEach(element => {
+        console.log(element, element.spellcheck);
+        console.log(element, element.getAttribute('spellcheck'));
+      });
+    </script>
+  </body>
+</html>
