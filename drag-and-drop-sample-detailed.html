@@ -1,0 +1,493 @@
+﻿<!DOCTYPE HTML>
+<html>
+  <head>
+    <style>
+      div {
+        border: 2px solid black;
+        width: 100%;
+      }
+      #draggable-div-with-pointer-events-none {
+        pointer-events: none;
+      }
+      .drop-container {
+        border: unset;
+        display: grid;
+        grid-auto-flow: column;
+        grid-template-rows: 1fr 4fr;
+        column-gap: 10px;
+      }
+      #drop-zone-with-link-overwrite {
+        position: relative;
+      }
+      #link-overwrite {
+        border: 1px solid gray;
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+      }
+    </style>
+  </head> 
+  <body>
+    <div class="drop-container">
+      Drop Zone:
+      <div id="drop-zone"></div>
+      Not-Drop Zone:
+      <div id="not-drop-zone"></div>
+      Drop Zone with link overwrite:
+      <div id="drop-zone-with-link-overwrite">
+        <span id="link-overwrite">Dragging over this content will try to add/update the link in the drag data, but drag data can only be changed in dragstart.</span>
+      </div>
+      Copy Drop Zone:
+      <div id="copy-drop-zone"></div>
+      Move Drop Zone:
+      <div id="move-drop-zone"></div>
+      Link Drop Zone:
+      <div id="link-drop-zone"></div>
+    </div>
+    <br/>
+    <a href="http://www.bing.com">Link to Bing.com</a>
+    <br/>
+    <br/>
+    <a href="http://www.bing.com" id="link-with-custom-drag-image">Link to Bing.com with custom drag image</a>
+    <br/>
+    <br/>
+    <img src="https://cdn.imgbin.com/17/20/25/imgbin-globe-flags-of-the-world-world-globe-globe-of-flag-illustration-MBARv8bBX4kYF2ATR5QPVJWC6.jpg" width="100px" height="100px"/>
+    <br/>
+    <br/>
+    <div draggable="true" title="Draggable div">Draggable div</div>
+    <br/>
+    <div draggable="false">Non-draggable div</div>
+    <br/>
+    <div title="Default draggable div" id="default-draggable-div">Default draggable div</div>
+    <br/>
+    <div draggable="true" title="Draggable div with pointer-events:none" id="draggable-div-with-pointer-events-none">Draggable div with pointer-events: none</div>
+    <br/>
+    <div draggable="true" title="Draggable div with custom drag image" id="draggable-div-with-custom-drag-image">Draggable div with custom drag image</div>
+    <br/>
+    <div draggable="true" title="Draggable div with copy effect allowed" id="draggable-div-with-copy-effect-allowed">Draggable div with copy effect allowed</div>
+    <br/>
+    <div draggable="true" title="Draggable div with move effect allowed" id="draggable-div-with-move-effect-allowed">Draggable div with move effect allowed</div>
+    <br/>
+    <div draggable="true" title="Draggable div with link effect allowed" id="draggable-div-with-link-effect-allowed">Draggable div with link effect allowed</div>
+    <br/>
+    <div draggable="true" title="Draggable div with copyMove effect allowed" id="draggable-div-with-copy-move-effect-allowed">Draggable div with copyMove effect allowed</div>
+    <br/>
+    <div draggable="true" title="Draggable div with copyLink effect allowed" id="draggable-div-with-copy-link-effect-allowed">Draggable div with copyLink effect allowed</div>
+    <br/>
+    <div draggable="true" title="Draggable div with linkMove effect allowed" id="draggable-div-with-link-move-effect-allowed">Draggable div with linkMove effect allowed</div>
+    <br/>
+    <div draggable="true" title="Draggable div with no effects allowed" id="draggable-div-with-no-effects-allowed">Draggable div with no effects allowed</div>
+    <br/>
+    <b>Logs:</b>
+    <div id="logs"></div>
+    <script>
+      function printData(dataTransfer, printTarget) {
+        let dataTransferTypes = dataTransfer.types;
+        for (let i = 0; i < dataTransferTypes.length; i++) {
+          let type = dataTransferTypes[i];
+          let data = dataTransfer.getData(type);
+          printTarget.innerHTML += `dataTransferType: ${type}, data: "${data}"<br/>`;
+        }
+      }
+
+      function setCustomDragImage(dataTransfer) {
+        let img = new Image();
+        img.setAttribute('src', 'test.jpg');
+        img.setAttribute('width', '10px');
+        img.setAttribute('height', '10px');
+        dataTransfer.setDragImage(img, 0, 0);
+      }
+
+      let dropZone = document.getElementById('drop-zone');
+      dropZone.addEventListener('dragenter', (e) => {
+        let logs = document.getElementById('logs');
+        logs.innerHTML += 'dropZoneDragEnter fired<br/>';
+
+        e.preventDefault();
+      });
+      dropZone.addEventListener('dragover', (e) => {
+        let logs = document.getElementById('logs');
+        logs.innerHTML += 'dropZoneDragOver fired<br/>';
+
+        e.preventDefault();
+      });
+      dropZone.addEventListener('dragleave', (e) => {
+        let logs = document.getElementById('logs');
+        logs.innerHTML += 'dropZoneDragLeave fired<br/>';
+      });
+      dropZone.addEventListener('drop', (e) => {
+        let logs = document.getElementById('logs');
+        logs.innerHTML += 'dropZoneDrop fired<br/>';
+
+        e.preventDefault();
+
+        printData(e.dataTransfer, dropZone);
+      });
+
+      let notDropZone = document.getElementById('not-drop-zone');
+      notDropZone.addEventListener('dragenter', (e) => {
+        let logs = document.getElementById('logs');
+        logs.innerHTML += 'notDropZoneDragEnter fired<br/>';
+
+        e.preventDefault();
+      });
+      notDropZone.addEventListener('dragover', (e) => {
+        let logs = document.getElementById('logs');
+        logs.innerHTML += 'notDropZoneDragOver fired<br/>';
+
+        e.preventDefault();
+      });
+      notDropZone.addEventListener('dragleave', (e) => {
+        let logs = document.getElementById('logs');
+        logs.innerHTML += 'notDropZoneDragLeave fired<br/>';
+      });
+
+      let dropZoneWithLinkOverwrite = document.getElementById('drop-zone-with-link-overwrite');
+      dropZoneWithLinkOverwrite.addEventListener('dragenter', (e) => {
+        let logs = document.getElementById('logs');
+        logs.innerHTML += 'dropZoneWithLinkOverwriteDragEnter fired<br/>';
+      });
+      dropZoneWithLinkOverwrite.addEventListener('dragover', (e) => {
+        let logs = document.getElementById('logs');
+        logs.innerHTML += 'dropZoneWithLinkOverwriteDragOver fired<br/>';
+
+        e.preventDefault();
+      });
+      dropZoneWithLinkOverwrite.addEventListener('dragleave', (e) => {
+        let logs = document.getElementById('logs');
+        logs.innerHTML += 'dropZoneWithLinkOverwriteDragLeave fired<br/>';
+      });
+      dropZoneWithLinkOverwrite.addEventListener('drop', (e) => {
+        let logs = document.getElementById('logs');
+        logs.innerHTML += 'dropZoneWithLinkOverwriteDrop fired<br/>';
+
+        e.preventDefault();
+
+        printData(e.dataTransfer, dropZoneWithLinkOverwrite);
+      });
+      let linkOverwrite = document.getElementById('link-overwrite');
+      linkOverwrite.addEventListener('dragenter', (e) => {
+        let logs = document.getElementById('logs');
+        logs.innerHTML += 'linkOverwriteDragEnter fired<br/>';
+
+        let dataTransfer = e.dataTransfer;
+        dataTransfer.setData('text/uri-list', 'http://www.google.com');
+        let uriList = "http://www.google.com\nhttp://www.bing.com";
+        console.log(uriList);
+      });
+      linkOverwrite.addEventListener('dragover', (e) => {
+        let logs = document.getElementById('logs');
+        logs.innerHTML += 'linkOverwriteDragOver fired<br/>';
+      });
+
+      let copyDropZone = document.getElementById('copy-drop-zone');
+      copyDropZone.addEventListener('dragenter', (e) => {
+        let logs = document.getElementById('logs');
+        logs.innerHTML += 'copyDropZoneDragEnter fired<br/>';
+
+        e.preventDefault();
+        e.dataTransfer.dropEffect = 'copy';
+      });
+      copyDropZone.addEventListener('dragover', (e) => {
+        let logs = document.getElementById('logs');
+        logs.innerHTML += 'copyDropZoneDragOver fired<br/>';
+
+        e.preventDefault();
+      });
+      copyDropZone.addEventListener('dragleave', (e) => {
+        let logs = document.getElementById('logs');
+        logs.innerHTML += 'copyDropZoneDragLeave fired<br/>';
+      });
+      copyDropZone.addEventListener('drop', (e) => {
+        let logs = document.getElementById('logs');
+        logs.innerHTML += 'copyDropZoneDrop fired<br/>';
+
+        e.preventDefault();
+
+        printData(e.dataTransfer, copyDropZone);
+      });
+
+      let moveDropZone = document.getElementById('move-drop-zone');
+      moveDropZone.addEventListener('dragenter', (e) => {
+        let logs = document.getElementById('logs');
+        logs.innerHTML += 'moveDropZoneDragEnter fired<br/>';
+
+        e.preventDefault();
+        e.dataTransfer.dropEffect = 'move';
+      });
+      moveDropZone.addEventListener('dragover', (e) => {
+        let logs = document.getElementById('logs');
+        logs.innerHTML += 'moveDropZoneDragOver fired<br/>';
+
+        e.preventDefault();
+      });
+      moveDropZone.addEventListener('dragleave', (e) => {
+        let logs = document.getElementById('logs');
+        logs.innerHTML += 'moveDropZoneDragLeave fired<br/>';
+      });
+      moveDropZone.addEventListener('drop', (e) => {
+        let logs = document.getElementById('logs');
+        logs.innerHTML += 'moveDropZoneDrop fired<br/>';
+
+        e.preventDefault();
+
+        printData(e.dataTransfer, moveDropZone);
+      });
+
+      let linkDropZone = document.getElementById('link-drop-zone');
+      linkDropZone.addEventListener('dragenter', (e) => {
+        let logs = document.getElementById('logs');
+        logs.innerHTML += 'linkDropZoneDragEnter fired<br/>';
+
+        e.preventDefault();
+        e.dataTransfer.dropEffect = 'link';
+      });
+      linkDropZone.addEventListener('dragover', (e) => {
+        let logs = document.getElementById('logs');
+        logs.innerHTML += 'linkDropZoneDragOver fired<br/>';
+
+        e.preventDefault();
+      });
+      linkDropZone.addEventListener('dragleave', (e) => {
+        let logs = document.getElementById('logs');
+        logs.innerHTML += 'linkDropZoneDragLeave fired<br/>';
+      });
+      linkDropZone.addEventListener('drop', (e) => {
+        let logs = document.getElementById('logs');
+        logs.innerHTML += 'linkDropZoneDrop fired<br/>';
+
+        e.preventDefault();
+
+        printData(e.dataTransfer, linkDropZone);
+      });
+
+
+
+
+
+      let linkWithCustomDragImage = document.getElementById('link-with-custom-drag-image');
+      linkWithCustomDragImage.addEventListener('dragstart', (e) => {
+        let logs = document.getElementById('logs');
+        logs.innerHTML += 'linkWithCustomDragImageDragStart fired<br/>';
+
+        setCustomDragImage(e.dataTransfer);
+      });
+      linkWithCustomDragImage.addEventListener('drag', (e) => {
+        let logs = document.getElementById('logs');
+        logs.innerHTML += 'linkWithCustomDragImageDrag fired<br/>';
+      });
+      linkWithCustomDragImage.addEventListener('dragend', (e) => {
+        let logs = document.getElementById('logs');
+        logs.innerHTML += 'linkWithCustomDragImageDragEnd fired<br/>';
+      });
+
+      let draggableDiv = document.querySelector('div[draggable="true"]');
+      draggableDiv.addEventListener('dragstart', (e) => {
+        let logs = document.getElementById('logs');
+        logs.innerHTML += 'draggableDivDragStart fired<br/>';
+
+        e.dataTransfer.setData('text/plain', draggableDiv.innerText);
+      });
+      draggableDiv.addEventListener('drag', (e) => {
+        let logs = document.getElementById('logs');
+        logs.innerHTML += 'draggableDivDrag fired<br/>';
+      });
+      draggableDiv.addEventListener('dragend', (e) => {
+        let logs = document.getElementById('logs');
+        logs.innerHTML += 'draggableDivDragEnd fired<br/>';
+      });
+
+      let nonDraggableDiv = document.querySelector('div[draggable="false"]');
+      nonDraggableDiv.addEventListener('dragstart', (e) => {
+        let logs = document.getElementById('logs');
+        logs.innerHTML += 'nonDraggableDivDragStart fired<br/>';
+
+        e.dataTransfer.setData('text/plain', nonDraggableDiv.innerText);
+      });
+      nonDraggableDiv.addEventListener('drag', (e) => {
+        let logs = document.getElementById('logs');
+        logs.innerHTML += 'nonDraggableDivDrag fired<br/>';
+      });
+      nonDraggableDiv.addEventListener('dragend', (e) => {
+        let logs = document.getElementById('logs');
+        logs.innerHTML += 'nonDraggableDivDragEnd fired<br/>';
+      });
+
+      let defaultDraggableDiv = document.getElementById('default-draggable-div');
+      defaultDraggableDiv.addEventListener('dragstart', (e) => {
+        let logs = document.getElementById('logs');
+        logs.innerHTML += 'defaultDraggableDivDragStart fired<br/>';
+
+        e.dataTransfer.setData('text/plain', defaultDraggableDiv.innerText);
+      });
+      defaultDraggableDiv.addEventListener('drag', (e) => {
+        let logs = document.getElementById('logs');
+        logs.innerHTML += 'defaultDraggableDivDrag fired<br/>';
+      });
+      defaultDraggableDiv.addEventListener('dragend', (e) => {
+        let logs = document.getElementById('logs');
+        logs.innerHTML += 'defaultDraggableDivDragEnd fired<br/>';
+      });
+
+      let draggableDivWithPointerEventsNone = document.getElementById('draggable-div-with-pointer-events-none');
+      draggableDivWithPointerEventsNone.addEventListener('dragstart', (e) => {
+        let logs = document.getElementById('logs');
+        logs.innerHTML += 'draggableDivWithPointerEventsNoneDragStart fired<br/>';
+
+        e.dataTransfer.setData('text/plain', draggableDivWithPointerEventsNone.innerText);
+      });
+      draggableDivWithPointerEventsNone.addEventListener('drag', (e) => {
+        let logs = document.getElementById('logs');
+        logs.innerHTML += 'draggableDivWithPointerEventsNoneDrag fired<br/>';
+      });
+      draggableDivWithPointerEventsNone.addEventListener('dragend', (e) => {
+        let logs = document.getElementById('logs');
+        logs.innerHTML += 'draggableDivWithPointerEventsNoneDragEnd fired<br/>';
+      });
+
+      let draggableDivWithCustomDragImage = document.getElementById('draggable-div-with-custom-drag-image');
+      draggableDivWithCustomDragImage.addEventListener('dragstart', (e) => {
+        let logs = document.getElementById('logs');
+        logs.innerHTML += 'draggableDivWithCustomDragImageDragStart fired<br/>';
+
+        let dataTransfer = e.dataTransfer;
+        dataTransfer.setData('text/plain', draggableDivWithCustomDragImage.innerText);
+        setCustomDragImage(dataTransfer);
+      });
+      draggableDivWithCustomDragImage.addEventListener('drag', (e) => {
+        let logs = document.getElementById('logs');
+        logs.innerHTML += 'draggableDivWithCustomDragImageDrag fired<br/>';
+      });
+      draggableDivWithCustomDragImage.addEventListener('dragend', (e) => {
+        let logs = document.getElementById('logs');
+        logs.innerHTML += 'draggableDivWithCustomDragImageDragEnd fired<br/>';
+      });
+
+      let draggableDivWithCopyEffectAllowed = document.getElementById('draggable-div-with-copy-effect-allowed');
+      draggableDivWithCopyEffectAllowed.addEventListener('dragstart', (e) => {
+        let logs = document.getElementById('logs');
+        logs.innerHTML += 'draggableDivWithCopyEffectAllowedDragStart fired<br/>';
+
+        let dataTransfer = e.dataTransfer;
+        dataTransfer.setData('text/plain', draggableDivWithCopyEffectAllowed.innerText);
+        dataTransfer.effectAllowed = 'copy';
+      });
+      draggableDivWithCopyEffectAllowed.addEventListener('drag', (e) => {
+        let logs = document.getElementById('logs');
+        logs.innerHTML += 'draggableDivWithCopyEffectAllowedDrag fired<br/>';
+      });
+      draggableDivWithCopyEffectAllowed.addEventListener('dragend', (e) => {
+        let logs = document.getElementById('logs');
+        logs.innerHTML += 'draggableDivWithCopyEffectAllowedDragEnd fired<br/>';
+      });
+
+      let draggableDivWithMoveEffectAllowed = document.getElementById('draggable-div-with-move-effect-allowed');
+      draggableDivWithMoveEffectAllowed.addEventListener('dragstart', (e) => {
+        let logs = document.getElementById('logs');
+        logs.innerHTML += 'draggableDivWithMoveEffectAllowedDragStart fired<br/>';
+
+        let dataTransfer = e.dataTransfer;
+        dataTransfer.setData('text/plain', draggableDivWithMoveEffectAllowed.innerText);
+        dataTransfer.effectAllowed = 'move';
+      });
+      draggableDivWithMoveEffectAllowed.addEventListener('drag', (e) => {
+        let logs = document.getElementById('logs');
+        logs.innerHTML += 'draggableDivWithMoveEffectAllowedDrag fired<br/>';
+      });
+      draggableDivWithMoveEffectAllowed.addEventListener('dragend', (e) => {
+        let logs = document.getElementById('logs');
+        logs.innerHTML += 'draggableDivWithMoveEffectAllowedDragEnd fired<br/>';
+      });
+
+      let draggableDivWithLinkEffectAllowed = document.getElementById('draggable-div-with-link-effect-allowed');
+      draggableDivWithLinkEffectAllowed.addEventListener('dragstart', (e) => {
+        let logs = document.getElementById('logs');
+        logs.innerHTML += 'draggableDivWithLinkEffectAllowedDragStart fired<br/>';
+
+        let dataTransfer = e.dataTransfer;
+        dataTransfer.setData('text/plain', draggableDivWithLinkEffectAllowed.innerText);
+        dataTransfer.effectAllowed = 'link';
+      });
+      draggableDivWithLinkEffectAllowed.addEventListener('drag', (e) => {
+        let logs = document.getElementById('logs');
+        logs.innerHTML += 'draggableDivWithLinkEffectAllowedDrag fired<br/>';
+      });
+      draggableDivWithLinkEffectAllowed.addEventListener('dragend', (e) => {
+        let logs = document.getElementById('logs');
+        logs.innerHTML += 'draggableDivWithLinkEffectAllowedDragEnd fired<br/>';
+      });
+
+      let draggableDivWithCopyMoveEffectAllowed = document.getElementById('draggable-div-with-copy-move-effect-allowed');
+      draggableDivWithCopyMoveEffectAllowed.addEventListener('dragstart', (e) => {
+        let logs = document.getElementById('logs');
+        logs.innerHTML += 'draggableDivWithCopyMoveEffectAllowedDragStart fired<br/>';
+
+        let dataTransfer = e.dataTransfer;
+        dataTransfer.setData('text/plain', draggableDivWithCopyMoveEffectAllowed.innerText);
+        dataTransfer.effectAllowed = 'copyMove';
+      });
+      draggableDivWithCopyMoveEffectAllowed.addEventListener('drag', (e) => {
+        let logs = document.getElementById('logs');
+        logs.innerHTML += 'draggableDivWithCopyMoveEffectAllowedDrag fired<br/>';
+      });
+      draggableDivWithCopyMoveEffectAllowed.addEventListener('dragend', (e) => {
+        let logs = document.getElementById('logs');
+        logs.innerHTML += 'draggableDivWithCopyMoveEffectAllowedDragEnd fired<br/>';
+      });
+
+      let draggableDivWithCopyLinkEffectAllowed = document.getElementById('draggable-div-with-copy-link-effect-allowed');
+      draggableDivWithCopyLinkEffectAllowed.addEventListener('dragstart', (e) => {
+        let logs = document.getElementById('logs');
+        logs.innerHTML += 'draggableDivWithCopyLinkEffectAllowedDragStart fired<br/>';
+
+        let dataTransfer = e.dataTransfer;
+        dataTransfer.setData('text/plain', draggableDivWithCopyLinkEffectAllowed.innerText);
+        dataTransfer.effectAllowed = 'copyLink';
+      });
+      draggableDivWithCopyLinkEffectAllowed.addEventListener('drag', (e) => {
+        let logs = document.getElementById('logs');
+        logs.innerHTML += 'draggableDivWithCopyLinkEffectAllowedDrag fired<br/>';
+      });
+      draggableDivWithCopyLinkEffectAllowed.addEventListener('dragend', (e) => {
+        let logs = document.getElementById('logs');
+        logs.innerHTML += 'draggableDivWithCopyLinkEffectAllowedDragEnd fired<br/>';
+      });
+
+      let draggableDivWithLinkMoveEffectAllowed = document.getElementById('draggable-div-with-link-move-effect-allowed');
+      draggableDivWithLinkMoveEffectAllowed.addEventListener('dragstart', (e) => {
+        let logs = document.getElementById('logs');
+        logs.innerHTML += 'draggableDivWithLinkMoveEffectAllowedDragStart fired<br/>';
+
+        let dataTransfer = e.dataTransfer;
+        dataTransfer.setData('text/plain', draggableDivWithLinkMoveEffectAllowed.innerText);
+        dataTransfer.effectAllowed = 'linkMove';
+      });
+      draggableDivWithLinkMoveEffectAllowed.addEventListener('drag', (e) => {
+        let logs = document.getElementById('logs');
+        logs.innerHTML += 'draggableDivWithLinkMoveEffectAllowedDrag fired<br/>';
+      });
+      draggableDivWithLinkMoveEffectAllowed.addEventListener('dragend', (e) => {
+        let logs = document.getElementById('logs');
+        logs.innerHTML += 'draggableDivWithLinkMoveEffectAllowedDragEnd fired<br/>';
+      });
+
+      let draggableDivWithNoEffectsAllowed = document.getElementById('draggable-div-with-no-effects-allowed');
+      draggableDivWithNoEffectsAllowed.addEventListener('dragstart', (e) => {
+        let logs = document.getElementById('logs');
+        logs.innerHTML += 'draggableDivWithNoEffectsAllowedDragStart fired<br/>';
+
+        let dataTransfer = e.dataTransfer;
+        dataTransfer.setData('text/plain', draggableDivWithNoEffectsAllowed.innerText);
+        dataTransfer.effectAllowed = 'none';
+      });
+      draggableDivWithNoEffectsAllowed.addEventListener('drag', (e) => {
+        let logs = document.getElementById('logs');
+        logs.innerHTML += 'draggableDivWithNoEffectsAllowedDrag fired<br/>';
+      });
+      draggableDivWithNoEffectsAllowed.addEventListener('dragend', (e) => {
+        let logs = document.getElementById('logs');
+        logs.innerHTML += 'draggableDivWithNoEffectsAllowedDragEnd fired<br/>';
+      });
+    </script>
+  </body>
+</html>
