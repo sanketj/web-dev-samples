@@ -1,0 +1,41 @@
+<style>
+    .divStyle {
+        display: block;
+        unicode-bidi: isolate;
+    }
+
+    .h1Style {
+        display: block;
+        font-size: 2em;
+        margin-block-start: 0.67em;
+        margin-block-end: 0.67em;
+        margin-inline-start: 0px;
+        margin-inline-end: 0px;
+        font-weight: bold;
+        unicode-bidi: isolate;
+    }
+</style>
+<div contenteditable="true">
+    <div>abc</div>
+    <div style="text-decoration: underline;">def</div>
+
+    <br>
+
+    <span class="divStyle">abc</span>
+    <span class="divStyle" style="text-decoration: underline;">def</span>
+
+    <br>
+
+    <h1>abc</h1>
+    <h1 style="text-decoration: underline;">def</h1>
+
+    <br>
+
+    <div class="h1Style">abc</div>
+    <div class="h1Style" style="text-decoration: underline;">def</div>
+
+    <br>
+
+    <span class="h1Style">abc</span>
+    <span class="h1Style" style="text-decoration: underline;">def</span>
+</div>
