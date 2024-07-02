@@ -26,10 +26,23 @@
         white-space: pre;
         margin: 1em 0px;
     }
+
+    .liStyle {
+        display: list-item;
+        text-align: -webkit-match-parent;
+        unicode-bidi: isolate;
+        list-style-position: inside;
+    }
+
+    .tdStyle {
+        display: table-cell;
+        vertical-align: inherit;
+        unicode-bidi: isolate;
+    }
 </style>
 <div contenteditable="true">
     <div class="container">
-        <h1>Div vs. span styled as div:</h1>
+        <h1>Div vs. styled as div:</h1>
         <br>
 
         <div>abc</div>
@@ -45,7 +58,7 @@
     <br>
 
     <div class="container">
-        <h1>H1 vs. div styled as h1:</h1>
+        <h1>H1 vs. styled as h1:</h1>
         <br>
 
         <h1>abc</h1>
@@ -66,7 +79,7 @@
     <br>
 
     <div class="container">
-        <h1>Pre vs. span styled as pre:</h1>
+        <h1>Pre vs. styled as pre:</h1>
         <br>
 
         <pre>abc</pre>
@@ -74,7 +87,57 @@
 
         <br>
 
+        <div class="preStyle">abc</div>
+        <div class="preStyle" style="text-decoration: underline;">def</div>
+
+        <br>
+
         <span class="preStyle">abc</span>
         <span class="preStyle" style="text-decoration: underline;">def</span>
+    </div>
+
+    <br>
+    <br>
+
+    <div class="container">
+        <h1>Li vs. styled as li</h1>
+        <br>
+
+        <li>abc</li>
+        <li style="text-decoration: underline;">def</li>
+
+        <br>
+
+        <div class="liStyle">abc</div>
+        <div class="liStyle" style="text-decoration: underline;">def</div>
+
+        <br>
+
+        <span class="liStyle">abc</span>
+        <span class="liStyle" style="text-decoration: underline;">def</span>
+    </div>
+
+    <br>
+
+    <div class="container">
+        <h1>Td vs. styled as td</h1>
+        <br>
+
+        <table>
+            <tr>
+                <td>abc</td>
+                <td style="text-decoration: underline;">def</td>
+            </tr>
+        </table>
+
+        <br>
+
+        <div class="tdStyle">abc</div>
+        <div class="tdStyle" style="text-decoration: underline;">def</div>
+
+        <br>
+
+        <span class="tdStyle">abc</span>
+        <span class="tdStyle" style="text-decoration: underline;">def</span>
     </div>
 </div>
