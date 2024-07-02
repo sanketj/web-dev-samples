@@ -1,4 +1,8 @@
 <style>
+    .container {
+        border: 2px solid black;
+    }
+
     .divStyle {
         display: block;
         unicode-bidi: isolate;
@@ -14,28 +18,63 @@
         font-weight: bold;
         unicode-bidi: isolate;
     }
+
+    .preStyle {
+        display: block;
+        font-family: monospace;
+        unicode-bidi: isolate;
+        white-space: pre;
+        margin: 1em 0px;
+    }
 </style>
 <div contenteditable="true">
-    <div>abc</div>
-    <div style="text-decoration: underline;">def</div>
+    <div class="container">
+        <h1>Div vs. span styled as div:</h1>
+        <br>
+
+        <div>abc</div>
+        <div style="text-decoration: underline;">def</div>
+    
+        <br>
+    
+        <span class="divStyle">abc</span>
+        <span class="divStyle" style="text-decoration: underline;">def</span>
+    </div>
 
     <br>
-
-    <span class="divStyle">abc</span>
-    <span class="divStyle" style="text-decoration: underline;">def</span>
-
     <br>
 
-    <h1>abc</h1>
-    <h1 style="text-decoration: underline;">def</h1>
+    <div class="container">
+        <h1>H1 vs. div styled as h1:</h1>
+        <br>
+
+        <h1>abc</h1>
+        <h1 style="text-decoration: underline;">def</h1>
+    
+        <br>
+    
+        <div class="h1Style">abc</div>
+        <div class="h1Style" style="text-decoration: underline;">def</div>
+    
+        <br>
+    
+        <span class="h1Style">abc</span>
+        <span class="h1Style" style="text-decoration: underline;">def</span>
+    </div>
 
     <br>
-
-    <div class="h1Style">abc</div>
-    <div class="h1Style" style="text-decoration: underline;">def</div>
-
     <br>
 
-    <span class="h1Style">abc</span>
-    <span class="h1Style" style="text-decoration: underline;">def</span>
+    <div class="container">
+        <h1>Pre vs. span styled as pre:</h1>
+        <br>
+
+        <pre>abc</pre>
+        <pre style="text-decoration: underline;">def</pre>
+
+        <br>
+
+        <span class="preStyle">abc</span>
+        <span class="preStyle" style="text-decoration: underline;">def</span>
+    </div>
 </div>
