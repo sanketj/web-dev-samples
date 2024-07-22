@@ -26,10 +26,12 @@
         dataTransfer.items.add("hi", "text/plain");
         dataTransfer.items.add("new octet item", "application/octet-stream");
 
+        console.log('before: ' + dataTransfer.items.length);
+
         // 3. clear the data in the data transfer
         dataTransfer.clearData();
 
-        console.log(dataTransfer.items.length);
+        console.log('after: ' + dataTransfer.items.length);
     </script>
   </body>
 </html>
