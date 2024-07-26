@@ -44,32 +44,7 @@
             let grammarHighlight = new Highlight(...grammarRanges);
             CSS.highlights.set('grammar-highlight', grammarHighlight);
 
-            // function createActiveHighlight(caretPosition) {
-            //     for (spellingRange of spellingRanges) {
-            //         if (spellingRange.startOffset <= caretPosition.startOffset && caretPosition.endOffset <= spellingRange.endOffset) {
-            //             CSS.highlights.delete('active-spellcheck-highlight');
-            //             CSS.highlights.delete('active-grammar-highlight');
-            //             let activeSpellingHighlight = new Highlight(spellingRange);
-            //             CSS.highlights.set('active-spellcheck-highlight', activeSpellingHighlight);
-            //             break;
-            //         }
-            //     }
-            //     for (grammarRange of grammarRanges) {
-            //         if (grammarRange.startOffset <= caretPosition.startOffset && caretPosition.endOffset <= grammarRange.endOffset) {
-            //             CSS.highlights.delete('active-spellcheck-highlight');
-            //             CSS.highlights.delete('active-grammar-highlight');
-            //             let activeGrammarHighlight = new Highlight(grammarRange);
-            //             CSS.highlights.set('active-grammar-highlight', activeGrammarHighlight);
-            //             break;
-            //         }
-            //     }
-            // }
-
-            div.addEventListener('mouseover', (event) => {
-                listenForMouseMove = true;
-                // let caretPosition = document.caretRangeFromPoint(event.clientX, event.clientY);
-                // createActiveHighlight(caretPosition);
-                let highlights = CSS.highlights.highlightsFromPoint(event.clientX, event.clientY);
+            function createActiveHighlights(highlights) {
                 for (highlight of highlights) {
                     if (highlight.name === 'spellcheck-highlight') {
                         CSS.highlights.delete('active-spellcheck-highlight');
@@ -95,12 +70,18 @@
                         CSS.highlights.set('active-grammar-highlight', activeGrammarHighlight);
                     }
                 }
+            }
+
+            div.addEventListener('mouseover', (event) => {
+                listenForMouseMove = true;
+                let highlights = CSS.highlights.highlightsFromPoint(event.clientX, event.clientY);
+                createActiveHighlights(highlights);
             });
 
             div.addEventListener('mousemove', (event) => {
                 if (listenForMouseMove) {
-                    // let caretPosition = document.caretRangeFromPoint(event.clientX, event.clientY);
-                    // createActiveHighlight(caretPosition);
+                    let highlights = CSS.highlights.highlightsFromPoint(event.clientX, event.clientY);
+                    createActiveHighlights(highlights);
                 }
             });
 
