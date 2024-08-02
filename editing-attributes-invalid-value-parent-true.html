@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    </head>
+    <body writingsuggestions="true" spellcheck="true" autocapitalize="on" contenteditable="true">
+        <div writingsuggestions="foo" spellcheck="foo" autocapitalize="foo" contenteditable="foo"></div>
+        <script>
+            let body = document.body;
+            let div = document.querySelector('div');
+            console.log('body.writingSuggestions: ' + body.writingSuggestions);
+            console.log('div.writingSuggestions: ' + div.writingSuggestions);
+            console.log('body.getAttribute(writingSuggestions): ' + body.getAttribute('writingSuggestions'));
+            console.log('div.getAttribute(writingSuggestions): ' + div.getAttribute('writingSuggestions'));
+            console.log('body.spellcheck: ' + body.spellcheck);
+            console.log('div.spellcheck: ' + div.spellcheck);
+            console.log('body.getAttribute(spellcheck): ' + body.getAttribute('spellcheck'));
+            console.log('div.getAttribute(spellcheck): ' + div.getAttribute('spellcheck'));
+            console.log('body.autocapitalize: ' + body.autocapitalize);
+            console.log('div.autocapitalize: ' + div.autocapitalize);
+            console.log('body.getAttribute(autocapitalize): ' + body.getAttribute('autocapitalize'));
+            console.log('div.getAttribute(autocapitalize): ' + div.getAttribute('autocapitalize'));
+            console.log('body.contentEditable: ' + body.contentEditable);
+            console.log('div.contentEditable: ' + div.contentEditable);
+            console.log('body.getAttribute(contentEditable): ' + body.getAttribute('contentEditable'));
+            console.log('div.getAttribute(contentEditable): ' + div.getAttribute('contentEditable'));
+        </script>
+    </body>
+</html>
