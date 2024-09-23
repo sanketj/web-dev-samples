@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            my-custom-element {
+                display: block;
+                width: 100%;
+                height: 100px;
+                background-color: red;
+            }
+        </style>
+    </head>
+    <body>
+        <script>
+            class MyCustomElement extends HTMLElement {
+                constructor() {
+                    super();
+                }
+            }
+            customElements.define('my-custom-element', MyCustomElement);
+        </script>
+        <my-custom-element contenteditable="true" autofocus></my-custom-element>
+    </body>
+</html>
