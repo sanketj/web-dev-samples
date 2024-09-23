@@ -1,0 +1,88 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            div::highlight(spellcheck-highlight) {
+                /* background-color: rgba(255, 48, 0, 25); */
+                text-decoration-color: red;
+                text-decoration-style: wavy;
+                text-decoration-line: underline;
+                text-decoration-thickness: 0.5px;
+            }
+            div::highlight(active-spellcheck-highlight) {
+                background-color: rgba(255, 48, 0, 0.25);
+            }
+            div::highlight(grammar-highlight) {
+                text-decoration-color: blue;
+                text-decoration-style: double;
+                text-decoration-line: underline;
+                text-decoration-thickness: 0.3px;
+            }
+            div::highlight(active-grammar-highlight) {
+                background-color: rgba(0, 85, 204, 0.25);
+            }
+        </style>
+    </head>
+    <body>
+        <div contenteditable="true" spellcheck="false">ths is a spellchecker tst. this will produced a bnh of errrs.</div>
+        <script>
+            let listenForMouseMove = false;
+
+            let div = document.querySelector('div');
+            let textNode = div.firstChild;
+            let spellingRanges = [
+                new StaticRange({startContainer: textNode, startOffset: 0, endContainer: textNode, endOffset: 3}),
+                new StaticRange({startContainer: textNode, startOffset: 22, endContainer: textNode, endOffset: 25}),
+                new StaticRange({startContainer: textNode, startOffset: 48, endContainer: textNode, endOffset: 51}),
+                new StaticRange({startContainer: textNode, startOffset: 55, endContainer: textNode, endOffset: 60})
+            ];
+            let spellingHighlight = new Highlight(...spellingRanges);
+            CSS.highlights.set('spellcheck-highlight', spellingHighlight);
+            let grammarRanges = [
+                new StaticRange({startContainer: textNode, startOffset: 37, endContainer: textNode, endOffset: 45})
+            ];
+            let grammarHighlight = new Highlight(...grammarRanges);
+            CSS.highlights.set('grammar-highlight', grammarHighlight);
+
+            function createActiveHighlight(caretPosition) {
+                for (spellingRange of spellingRanges) {
+                    if (spellingRange.startOffset <= caretPosition.startOffset && caretPosition.endOffset <= spellingRange.endOffset) {
+                        CSS.highlights.delete('active-spellcheck-highlight');
+                        CSS.highlights.delete('active-grammar-highlight');
+                        let activeSpellingHighlight = new Highlight(spellingRange);
+                        CSS.highlights.set('active-spellcheck-highlight', activeSpellingHighlight);
+                        break;
+                    }
+                }
+                for (grammarRange of grammarRanges) {
+                    if (grammarRange.startOffset <= caretPosition.startOffset && caretPosition.endOffset <= grammarRange.endOffset) {
+                        CSS.highlights.delete('active-spellcheck-highlight');
+                        CSS.highlights.delete('active-grammar-highlight');
+                        let activeGrammarHighlight = new Highlight(grammarRange);
+                        CSS.highlights.set('active-grammar-highlight', activeGrammarHighlight);
+                        break;
+                    }
+                }
+            }
+
+            div.addEventListener('mouseover', (event) => {
+                listenForMouseMove = true;
+                let caretPosition = document.caretRangeFromPoint(event.clientX, event.clientY);
+                createActiveHighlight(caretPosition);
+            });
+
+            div.addEventListener('mousemove', (event) => {
+                if (listenForMouseMove) {
+                    let caretPosition = document.caretRangeFromPoint(event.clientX, event.clientY);
+                    createActiveHighlight(caretPosition);
+                }
+            });
+
+            div.addEventListener('mouseout', (event) => {
+                listenForMouseMove = false;
+                CSS.highlights.delete('active-spellcheck-highlight');
+                CSS.highlights.delete('active-grammar-highlight');
+            });
+        </script>
+    </body>
+</html>
