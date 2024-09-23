@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      div {
+        border: 2px solid black;
+      }
+    </style>
+  </head>
+  <body>
+    <form onsubmit="alert('hello')" id="myForm"></form>
+    <button type="button" form="myForm">Submit</button>
+    <script>
+        const button = document.querySelector('button');
+        console.log(button.type);
+    </script>
+  </body>
+</html>
