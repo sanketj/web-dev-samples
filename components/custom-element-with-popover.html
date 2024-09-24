@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            custom-button {
+                border: 0;
+                line-height: 2.5;
+                padding: 0 20px;
+                font-size: 1rem;
+                text-align: center;
+                color: #fff;
+                text-shadow: 1px 1px 1px #000;
+                border-radius: 10px;
+                background-color: rgba(220, 0, 0, 1);
+                background-image: linear-gradient(
+                    to top left,
+                    rgba(0, 0, 0, 0.2),
+                    rgba(0, 0, 0, 0.2) 30%,
+                    rgba(0, 0, 0, 0)
+                );
+                box-shadow:
+                    inset 2px 2px 3px rgba(255, 255, 255, 0.6),
+                    inset -2px -2px 3px rgba(0, 0, 0, 0.6);
+            }
+
+            custom-button:hover {
+                background-color: rgba(255, 0, 0, 1);
+            }
+
+            custom-button:active {
+                box-shadow: inset -2px -2px 3px rgba(255, 255, 255, 0.6), inset 2px 2px 3px rgba(0, 0, 0, 0.6);
+            }
+        </style>
+    </head>
+    <body>
+        <script>
+            class CustomButton extends HTMLElement {}
+            customElements.define('custom-button', CustomButton);
+        </script>
+        <custom-button popovertarget="foo">Show Popover</custom-button>
+        <div id="foo" popover>This is a popover</div>
+        <custom-button popovertarget="bar">Show Popover</custom-button>
+        <div id="bar" popover>This is a popover</div>
+        <script>
+            const barInvoker = document.querySelector('custom-button[popovertarget="bar"]');
+            barInvoker.addEventListener('click', () => {
+                const bar = document.getElementById('bar');
+                bar.showPopover();
+            });
+        </script>
+    </body>
+</html>
