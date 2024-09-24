@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <button popovertarget="foo">Show Popover</button>
+        <div id="foo" popover>This is a popover</div>
+        <button popovertarget="bar">Show Popover</button>
+        <div id="bar" popover>This is a popover</div>
+        <script>
+            const barInvoker = document.querySelector('button[popovertarget="bar"]');
+            barInvoker.addEventListener('click', () => {
+                const bar = document.getElementById('bar');
+                bar.showPopover();
+            });
+        </script>
+    </body>
+</html>
