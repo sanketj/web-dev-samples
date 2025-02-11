@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <script>
+        class CustomButton extends HTMLButtonElement {
+            constructor() {
+                super();
+                this.textContent = 'Click me!';
+                this.style.backgroundColor = 'blue';
+                this.style.color = 'white';
+                this.style.border = 'none';
+                this.style.padding = '10px 20px';
+                this.style.cursor = 'pointer';
+            }
+        }
+        customElements.define('custom-button', CustomButton, { extends: 'button' });
+    </script>
+    <br />
+    Custom button created directly: <custom-button></custom-button><br />
+    Custom button created via `is`: <button is="custom-button"></button>
+</body>
+</html>
