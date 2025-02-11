@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculator</title>
+    <script src="calculator.js"></script>
+</head>
+<body>
+    <script>
+        CalculatorModule().then((module) => {
+            const calculator = new module.Calculator();
+            console.log(calculator.add(1, 2));
+            console.log(calculator.subtract(1, 2));
+            console.log(calculator.multiply(1, 2));
+            console.log(calculator.divide(1, 2));
+        });
+    </script>
+</body>
+</html>
