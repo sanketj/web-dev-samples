@@ -5,17 +5,5 @@
         <div id="foo" popover>This is a popover</div>
         <button popovertarget="bar" disabled>Show Popover</button>
         <div id="bar" popover disabled>This is a popover</div>
-        <script>
-            const fooInvoker = document.querySelector('button[popovertarget="foo"]');
-            fooInvoker.addEventListener('click', () => {
-                const foo = document.getElementById('foo');
-                foo.showPopover();
-            });
-            const barInvoker = document.querySelector('button[popovertarget="bar"]');
-            barInvoker.addEventListener('click', () => {
-                const bar = document.getElementById('bar');
-                bar.showPopover();
-            });
-        </script>
     </body>
 </html>
