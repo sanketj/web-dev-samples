@@ -4,7 +4,7 @@
         <button popovertarget="foo">Show Popover</button>
         <div id="foo" popover>This is a popover</div>
         <button popovertarget="bar" disabled>Show Popover</button>
-        <div id="bar" popover>This is a popover</div>
+        <div id="bar" popover disabled>This is a popover</div>
         <script>
             const fooInvoker = document.querySelector('button[popovertarget="foo"]');
             fooInvoker.addEventListener('click', () => {
