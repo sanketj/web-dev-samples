@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            my-custom-element {
+                display: block;
+                width: 100%;
+                height: 100px;
+                background-color: red;
+            }
+        </style>
+    </head>
+    <body>
+        <script>
+            class CustomCheckbox extends HTMLElement {
+                static formAssociated = false;
+
+                constructor() {
+                    super();
+                    this.internals_ = this.attachInternals();
+                }
+            }
+
+            window.customElements.define("custom-checkbox", CustomCheckbox);
+        </script>
+        <custom-checkbox></custom-checkbox>
+        <script>
+            let element = document.querySelector("custom-checkbox");
+            console.log(element.internals_);
+        </script>
+    </body>
+</html>
